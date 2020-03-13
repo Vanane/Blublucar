@@ -16,6 +16,24 @@ class TrajetController extends AbstractController
     {
         return $this->render("base.html.twig");
     }
+    public function voirTrajet()
+    {
+
+    }
+    public function AjouterTrajet()
+    {
+
+    }
+    public function SupprimerTrajet()
+    {
+
+    }
+
+    public function voirTrajetUtilisateur()
+    {
+
+    }
+
 
 }
 

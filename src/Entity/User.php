@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -32,6 +34,28 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Trajet", mappedBy="conducteur", orphanRemoval=true)
+     */
+    private $trajets;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Commentaire", mappedBy="posteur")
+     */
+    private $commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Reservation", mappedBy="passager", orphanRemoval=true)
+     */
+    private $reservations;
+
+    public function __construct()
+    {
+        $this->trajets = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -109,5 +133,98 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Trajet[]
+     */
+    public function getTrajets(): Collection
+    {
+        return $this->trajets;
+    }
+
+    public function addTrajet(Trajet $trajet): self
+    {
+        if (!$this->trajets->contains($trajet)) {
+            $this->trajets[] = $trajet;
+            $trajet->setConducteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTrajet(Trajet $trajet): self
+    {
+        if ($this->trajets->contains($trajet)) {
+            $this->trajets->removeElement($trajet);
+            // set the owning side to null (unless already changed)
+            if ($trajet->getConducteur() === $this) {
+                $trajet->setConducteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setPosteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->contains($commentaire)) {
+            $this->commentaires->removeElement($commentaire);
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getPosteur() === $this) {
+                $commentaire->setPosteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setPassager($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->contains($reservation)) {
+            $this->reservations->removeElement($reservation);
+            // set the owning side to null (unless already changed)
+            if ($reservation->getPassager() === $this) {
+                $reservation->setPassager(null);
+            }
+        }
+
+        return $this;
     }
 }

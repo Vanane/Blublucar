@@ -1,10 +1,17 @@
 <?php
-
-
 namespace App\Controller;
 
 
-class CommentairesController
-{
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+class CommentairesController extends AbstractController
+{
+    public function VoirCommentaireUtilisateur()
+    {
+
+    }
 }
+
+
