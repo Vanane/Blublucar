@@ -9,12 +9,29 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Page d'Accueil</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/vanane/Travail/Blublucar/src/Controller/TrajetController.php'|file_link(0) }}">src/Controller/TrajetController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/vanane/Travail/Blublucar/templates/trajet/index.html.twig'|file_link(0) }}">templates/trajet/index.html.twig</a></code></li>
-    </ul>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Conducteur</th>
+            <th>Départ</th>
+            <th>Arrivée</th>
+            <th>Temps de trajet</th>
+            <th>Prix</th>
+            <th>Nombre de places</th>
+        </tr>
+{% for trajet in trajets %}
+        <tr>
+            <td>{{ trajet.id }}</td>
+            <td>{{ trajet.conducteur }}</td>
+            <td>{{ trajet.pointDepart }}</td>
+            <td>{{ trajet.pointArrivee }}</td>
+            <td>{{ trajet.tempsTrajet }}</td>
+            <td>{{ trajet.prix }}</td>
+            <td>{{ trajet.nbPlaces }}</td>
+        </tr>
+{% endfor %}
+    </table>
 </div>
 {% endblock %}
