@@ -1,42 +1,19 @@
 <?php
+
 namespace App\Controller;
 
-
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 class TrajetController extends AbstractController
 {
-
-       /**
-     * @Route("/", name="Accueil")
+    /**
+     * @Route("/trajet", name="trajet")
      */
     public function index()
     {
-        return $this->render("base.html.twig");
+        return $this->render('trajet/index.html.twig', [
+            'controller_name' => 'TrajetController',
+        ]);
     }
-    public function voirTrajet()
-    {
-
-    }
-    public function AjouterTrajet()
-    {
-
-    }
-    public function SupprimerTrajet()
-    {
-
-    }
-
-    public function voirTrajetUtilisateur()
-    {
-
-    }
-
-
 }
-
-
-?>
-
