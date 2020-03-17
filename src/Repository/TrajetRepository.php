@@ -31,6 +31,17 @@ class TrajetRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getDerniersTrajets()
+    {
+        $datetime = new \DateTime(date('c'));
+        $dateAjd = $datetime->format('c');
+        return $this->createQueryBuilder('t')
+        ->where("t.date > '$dateAjd'")
+        ->setMaxResults(5)
+        ->getQuery()
+        ->getResult();
+    }
+
 
     // /**
     //  * @return Trajet[] Returns an array of Trajet objects

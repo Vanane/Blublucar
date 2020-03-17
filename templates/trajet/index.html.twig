@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TrajetController!{% endblock %}
+{% block title %}Blublucar{% endblock %}
 
 {% block body %}
 <style>
@@ -9,8 +9,8 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Page d'Accueil</h1>
-
+    <h1>Blublucar</h1>
+    <h2>Trajets à venir</h2>
     <table>
         <tr>
             <th>Id</th>
@@ -30,6 +30,7 @@
             <td>{{ trajet.tempsTrajet }}</td>
             <td>{{ trajet.prix }}</td>
             <td>{{ trajet.nbPlaces }}</td>
+            <td>{{ trajet.date.format('y-m-d h:i:s') }}</td>
         </tr>
 {% endfor %}
     </table>

@@ -5,6 +5,7 @@ use App\Entity\Trajet;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use \DateTime;
 
 class TrajetFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -18,6 +19,7 @@ class TrajetFixtures extends Fixture implements DependentFixtureInterface
         $trajet1 = new Trajet();
 
         $option = ['animaux','Gros Bagage'];
+        $date = new DateTime(date('Y-m-d h:i:s', mktime(15, 0, 0, 3, 14, 2020)));
 
         $trajet1->setConducteur($manager->merge($this->getReference('user-fred')))
         ->setPointDepart($manager->merge($this->getReference('destination-lorient')))
@@ -26,12 +28,14 @@ class TrajetFixtures extends Fixture implements DependentFixtureInterface
         ->setPrix(14.5)
         ->setNbPlaces(3)
         ->setVehicule('Clio')
-        ->setOptions($option);
+        ->setOptions($option)
+        ->setDate($date);
         $manager->persist($trajet1);
 
         $trajet2 = new Trajet();
 
         $option = ['climatisation','Gros Bagage'];
+        $date = new DateTime(date('Y-m-d h:i:s', mktime(10, 0, 0, 3, 24, 2020)));
 
         $trajet2->setConducteur($manager->merge($this->getReference('user-karine')))
         ->setPointDepart($manager->merge($this->getReference('destination-caen')))
@@ -40,12 +44,14 @@ class TrajetFixtures extends Fixture implements DependentFixtureInterface
         ->setPrix(36.9)
         ->setNbPlaces(4)
         ->setVehicule('3006')
-        ->setOptions($option);
+        ->setOptions($option)
+        ->setDate($date);
         $manager->persist($trajet2);
 
         $trajet3 = new Trajet();
 
         $option = [''];
+        $date = new DateTime(date('Y-m-d h:i:s', mktime(10, 0, 0, 3, 27, 2020)));
 
         $trajet3->setConducteur($manager->merge($this->getReference('user-avignon')))
         ->setPointDepart($manager->merge($this->getReference('destination-brest')))
@@ -54,7 +60,8 @@ class TrajetFixtures extends Fixture implements DependentFixtureInterface
         ->setPrix(20.9)
         ->setNbPlaces(2)
         ->setVehicule('Laguna')
-        ->setOptions($option);
+        ->setOptions($option)
+        ->setDate($date);
         $manager->persist($trajet3);
 
         $manager->flush();

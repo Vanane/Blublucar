@@ -71,6 +71,11 @@ class Trajet
      */
     private $reservations;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -236,6 +241,18 @@ class Trajet
                 $reservation->setTrajet(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDate(): ? \DateTime
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTime $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
