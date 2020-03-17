@@ -11,13 +11,37 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  * @method Trajet|null findOneBy(array $criteria, array $orderBy = null)
  * @method Trajet[]    findAll()
  * @method Trajet[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Trajet[]    list()
  */
+
 class TrajetRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Trajet::class);
     }
+
+    /**
+     * @return Trajet[] Returns an array of Trajet objects
+    */    
+    public function list()
+    {
+        return $this->createQueryBuilder('t')            
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getDerniersTrajets()
+    {
+        $datetime = new \DateTime(date('c'));
+        $dateAjd = $datetime->format('c');
+        return $this->createQueryBuilder('t')
+        ->where("t.date > '$dateAjd'")
+        ->setMaxResults(5)
+        ->getQuery()
+        ->getResult();
+    }
+
 
     // /**
     //  * @return Trajet[] Returns an array of Trajet objects
@@ -35,6 +59,7 @@ class TrajetRepository extends ServiceEntityRepository
         ;
     }
     */
+
 
     /*
     public function findOneBySomeField($value): ?Trajet
