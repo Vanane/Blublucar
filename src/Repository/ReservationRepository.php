@@ -19,6 +19,22 @@ class ReservationRepository extends ServiceEntityRepository
         parent::__construct($registry, Reservation::class);
     }
 
+    /**
+     * @return array 
+     */
+
+    public function getPlacesTrajet(int $trajet) : int
+    {
+        $int = $this->createQueryBuilder('r')
+        ->select("SUM(r.nbPersonnes)")
+        ->where("r.trajet = $trajet")
+        ->groupBy("r.id")
+        ->getQuery()
+        ->getSingleScalarResult();
+        
+        return $int;
+    }
+
     // /**
     //  * @return Reservation[] Returns an array of Reservation objects
     //  */

@@ -31,6 +31,9 @@ class TrajetRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return Trajet[] Returns an array of Trajet objects
+    */    
     public function getDerniersTrajets()
     {
         $datetime = new \DateTime(date('c'));
@@ -40,6 +43,18 @@ class TrajetRepository extends ServiceEntityRepository
         ->setMaxResults(5)
         ->getQuery()
         ->getResult();
+    }
+
+    /**
+     * @return Trajet Returns a Trajet object
+    */    
+    public function getTrajetparSonId($id)
+    {
+        return $this->createQueryBuilder('t')
+        ->where("t.id = '$id'")
+        ->getQuery()
+        ->getSingleResult();
+
     }
 
 

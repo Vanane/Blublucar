@@ -5,3 +5,16 @@
 index:
     path: /
     controller: App\Controller\TrajetController::index
+
+
+# Routes trajets
+
+trajet.liste:
+    path: /trajet/liste
+    controller : App\Controller\TrajetController::liste
+
+trajet.detail:
+    path: /trajet/detail/{id}
+    controller : App\Controller\TrajetController::detail
+
+# Routes réservations

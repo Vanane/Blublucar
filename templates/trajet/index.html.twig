@@ -1,38 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Blublucar{% endblock %}
+{% block soustitre %}Prochains départs{% endblock %}
 
 {% block body %}
+
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
 <div class="example-wrapper">
-    <h1>Blublucar</h1>
-    <h2>Trajets à venir</h2>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Conducteur</th>
-            <th>Départ</th>
-            <th>Arrivée</th>
-            <th>Temps de trajet</th>
-            <th>Prix</th>
-            <th>Nombre de places</th>
-        </tr>
-{% for trajet in trajets %}
-        <tr>
-            <td>{{ trajet.id }}</td>
-            <td>{{ trajet.conducteur }}</td>
-            <td>{{ trajet.pointDepart }}</td>
-            <td>{{ trajet.pointArrivee }}</td>
-            <td>{{ trajet.tempsTrajet }}</td>
-            <td>{{ trajet.prix }}</td>
-            <td>{{ trajet.nbPlaces }}</td>
-            <td>{{ trajet.date.format('y-m-d h:i:s') }}</td>
-        </tr>
-{% endfor %}
-    </table>
+        {% for trajet in trajets %}
+        <a class="trajet-wrapper shadow" href={{ path("trajet.detail", {'id' : trajet.id}) }}>
+            <div> Id Trajet : {{ trajet.id }} </div>
+            <div> Trajet : {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }}</div>
+        </a>
+        {% endfor %}
 </div>
 {% endblock %}
+
+

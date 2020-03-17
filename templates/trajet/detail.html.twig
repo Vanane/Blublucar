@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block soustitre %}
+Détail du trajet {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }},
+le {{ trajet.date.format("D d M Y") }} à {{ trajet.date.format("h:i") }}
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="trajet-wrapper">
+        <div> Id Trajet : {{ trajet.id }} </div>
+        <div> Conducteur : {{ trajet.conducteur }} </div>
+        <div> Nombre de places : {{ trajet.nbPlaces }} </div>
+        <div> Places restantes : {{ trajet.nbPlaces - resastrajet }} </div>
+        <div> Départ : {{ trajet.pointDepart }} </div>
+        <div> Arrivée : {{ trajet.pointArrivee }} </div>
+        <div> Temps de Trajet : {{ trajet.tempsTrajet }}</div>        
+    </div>
+
+{% endblock %}
