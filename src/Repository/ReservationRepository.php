@@ -26,12 +26,14 @@ class ReservationRepository extends ServiceEntityRepository
     public function getPlacesTrajet(int $trajet) : int
     {
         $int = $this->createQueryBuilder('r')
-        ->select("SUM(r.nbPersonnes)")
-        ->where("r.trajet = $trajet")
-        ->groupBy("r.id")
-        ->getQuery()
-        ->getSingleScalarResult();
-        
+            ->select("SUM(r.nbPersonnes)")
+            ->where("r.trajet = $trajet")
+            ->groupBy("r.id")
+            ->getQuery()
+            ->getOneOrNullResult()[1];
+
+        if($int == null)
+            $int = 0;
         return $int;
     }
 

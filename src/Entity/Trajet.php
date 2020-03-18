@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrajetRepository")
@@ -27,6 +29,7 @@ class Trajet
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Destination", inversedBy="trajets")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Expression("not (value == this.getPointArrivee())")
      */
     private $pointDepart;
 

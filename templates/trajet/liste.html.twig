@@ -7,6 +7,8 @@
         <div> Id Trajet : {{ trajet.id }} </div>
         <div> Trajet : {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }}</div>
     </a>
-
+    {% else %}
+        Vous n'avez pas encore inscrit de trajet !
     {% endfor %}
+    <a class="but shadow" href={{ path("trajet.ajout") }}>Ajouter un trajet</a>
 {% endblock %}

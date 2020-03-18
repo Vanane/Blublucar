@@ -32,6 +32,18 @@ class TrajetRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return Trajet[] Returns an array of Trajets mde by User
+    */    
+    public function listeParUser($id)
+    {
+        return $this->createQueryBuilder('t')  
+            ->where("t.conducteur = '$id'")
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    /**
      * @return Trajet[] Returns an array of Trajet objects
     */    
     public function getDerniersTrajets()

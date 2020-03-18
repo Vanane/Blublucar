@@ -16,6 +16,25 @@ le {{ trajet.date.format("D d M Y") }} à {{ trajet.date.format("h:i") }}
         <div> Départ : {{ trajet.pointDepart }} </div>
         <div> Arrivée : {{ trajet.pointArrivee }} </div>
         <div> Temps de Trajet : {{ trajet.tempsTrajet }}</div>        
+        <div> Voiture : {{ trajet.vehicule }}</div>        
     </div>
+{% if trajet.conducteur.getId() == app.user.getId() %}
+    <a class="but" href={{ path("trajet.supprimer", {"id" : trajet.id}) }}>Supprimer</a>
+    <h2>Réservations</h2>
+    {% for resa in trajet.reservations %}
+
+    <div class="trajet-wrapper">
+        <div> Id Réservation : {{ resa.id }} </div>
+        <div> Passager : {{ resa.passager }} </div>
+        <div> Nombre de personnes : {{ resa.nbPersonnes }} </div>
+        
+        <div> Paiement effectué : {{ resa.Paye == 1 ? "oui" : "non" }} </div>
+    </div>
+
+    {% else %}
+    Il n'y a encore aucune réservation.
+    {% endfor %}
+
+{% endif %}
 
 {% endblock %}

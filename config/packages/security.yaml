@@ -39,3 +39,7 @@ security:
         
         # require ROLE_ADMIN for /trajet*
         - { path: ^/reservation, roles: ROLE_USER }
+        - { path: ^/trajet/self, roles: ROLE_USER }
+        - { path: ^/trajet/ajout, roles: ROLE_USER }
+        - { path: ^/trajet/detail*, roles: ROLE_USER }
+        - { path: ^/trajet/supprimer*, roles: ROLE_USER }

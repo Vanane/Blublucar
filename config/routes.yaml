@@ -17,4 +17,17 @@ trajet.detail:
     path: /trajet/detail/{id}
     controller : App\Controller\TrajetController::detail
 
+trajet.self:
+    path: /trajet/self
+    controller : App\Controller\TrajetController::listeUser
+
+trajet.ajout:
+    path: /trajet/ajout
+    controller : App\Controller\TrajetController::ajout
+
+trajet.supprimer:
+    path: /trajet/supprimer/{id}
+    controller : App\Controller\TrajetController::supprimer
+
+
 # Routes réservations
