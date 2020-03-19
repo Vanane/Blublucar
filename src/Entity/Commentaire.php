@@ -9,6 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commentaire
 {
+    public function __toString()
+    {
+        return $this->message;
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

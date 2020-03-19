@@ -46,7 +46,7 @@ a
     overflow: auto;
 }
 
-.trajet-wrapper, .trajet-wrapper div
+.ligne-wrapper, .ligne-wrapper div
 {
     position:relative;
     display:block;
@@ -55,14 +55,14 @@ a
     padding:0.5em;
     box-sizing:border-box;
 }
-.trajet-wrapper
+.ligne-wrapper
 {
     width:100%;
     border-top: solid 1px black;
 }
 
 
-.trajet-wrapper div
+.ligne-wrapper div
 {
     width:50%;
     float:left;

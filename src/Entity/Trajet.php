@@ -34,7 +34,7 @@ class Trajet
     private $pointDepart;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Destination", inversedBy="trajets")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Destination", inversedBy="trajetsArrivee")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pointArrivee;
@@ -83,6 +83,11 @@ class Trajet
     {
         $this->commentaires = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return "$this->id : $this->pointDepart, $this->pointArrivee";
     }
 
     public function getId(): ?int
@@ -258,5 +263,17 @@ class Trajet
         $this->date = $date;
 
         return $this;
+    }
+
+
+    public function getPlacesPrises()
+    {
+        $resas = $this->getReservations();
+        $places = 0;
+        foreach($resas as $resa)
+        {
+            $places += $resa->getNbPersonnes();
+        }
+        return $places;
     }
 }

@@ -43,3 +43,4 @@ security:
         - { path: ^/trajet/ajout, roles: ROLE_USER }
         - { path: ^/trajet/detail*, roles: ROLE_USER }
         - { path: ^/trajet/supprimer*, roles: ROLE_USER }
+        - { path: ^/admin*, roles: ROLE_ADMIN }

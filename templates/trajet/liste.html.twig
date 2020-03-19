@@ -3,12 +3,12 @@
 {% block soustitre %}Liste des trajets{% endblock %}
 {% block body %}
     {% for trajet in trajets %}
-    <a class="trajet-wrapper shadow" href={{ path("trajet.detail", {'id' : trajet.id}) }}>
+    <a class="ligne-wrapper shadow" href={{ path("trajet.detail", {'id' : trajet.id}) }}>
         <div> Id Trajet : {{ trajet.id }} </div>
         <div> Trajet : {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }}</div>
     </a>
     {% else %}
-        Vous n'avez pas encore inscrit de trajet !
+        Aucun trajet n'est disponible.
     {% endfor %}
     <a class="but shadow" href={{ path("trajet.ajout") }}>Ajouter un trajet</a>
 {% endblock %}

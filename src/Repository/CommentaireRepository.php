@@ -19,6 +19,26 @@ class CommentaireRepository extends ServiceEntityRepository
         parent::__construct($registry, Commentaire::class);
     }
 
+
+    public function listeUser($usr)
+    {
+        return $this->createQueryBUilder('c')
+            ->where("c.posteur = '$usr'")
+            ->getQuery()
+            ->getResult();
+    }
+
+    // /**
+    //  * @return Commentaire[] Returns an array of Commentaire objects
+    //  */
+    public function commentairesTrajet($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->where("c.trajet_id = $id")
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Commentaire[] Returns an array of Commentaire objects
     //  */

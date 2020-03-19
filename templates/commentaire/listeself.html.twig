@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% endblock %}
+{% block body %}
+    {% for comm in comms %}
+    <div class="ligne-wrapper">
+        <div>Id : {{ comm.id }}</div>
+        <div>Note : {{ comm.note }}/5</div>
+        <div>Message : {{ comm.message }}</div>
+    </div>
+    <a class="but shadow" href={{ path("commentaire.supprimer", {'id':comm.id}) }}>Supprimer</a>
+    {% else %}
+    Vous n'avez posté aucun commentaire.
+    {% endfor %}
+{% endblock %}

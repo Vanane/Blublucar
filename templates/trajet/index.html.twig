@@ -9,14 +9,12 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
         {% for trajet in trajets %}
-        <a class="trajet-wrapper shadow" href={{ path("trajet.detail", {'id' : trajet.id}) }}>
+        <a class="ligne-wrapper shadow" href={{ path("trajet.detail", {'id' : trajet.id}) }}>
             <div> Id Trajet : {{ trajet.id }} </div>
             <div> Trajet : {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }}</div>
         </a>
         {% endfor %}
-</div>
 {% endblock %}
 
 

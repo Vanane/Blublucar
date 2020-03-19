@@ -38,9 +38,15 @@ class Destination
      */
     private $trajets;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Trajet", mappedBy="pointArrivee", orphanRemoval=true)
+     */
+    private $trajetsArrivee;
+
     public function __construct()
     {
         $this->trajets = new ArrayCollection();
+        $this->trajetsArrivee = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,5 +125,36 @@ class Destination
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    /**
+     * @return Collection|Trajet[]
+     */
+    public function getTrajetsArrivee(): Collection
+    {
+        return $this->trajetsArrivee;
+    }
+
+    public function addTrajetsArrivee(Trajet $trajetsArrivee): self
+    {
+        if (!$this->trajetsArrivee->contains($trajetsArrivee)) {
+            $this->trajetsArrivee[] = $trajetsArrivee;
+            $trajetsArrivee->setDestination($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTrajetsArrivee(Trajet $trajetsArrivee): self
+    {
+        if ($this->trajetsArrivee->contains($trajetsArrivee)) {
+            $this->trajetsArrivee->removeElement($trajetsArrivee);
+            // set the owning side to null (unless already changed)
+            if ($trajetsArrivee->getDestination() === $this) {
+                $trajetsArrivee->setDestination(null);
+            }
+        }
+
+        return $this;
     }
 }

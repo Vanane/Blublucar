@@ -30,7 +30,6 @@ class TrajetController extends AbstractController
     public function liste()
     {
         $trajets = $this->getDoctrine()->getRepository(Trajet::class)->list();
-        
 
         return $this->render('trajet/liste.html.twig', [
             'trajets' => $trajets
@@ -43,12 +42,11 @@ class TrajetController extends AbstractController
     public function detail($id)
     {
         $trajet = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetParSonId($id);
-        
         $resas = $this->getDoctrine()->getRepository(Reservation::class)->getPlacesTrajet($id);
 
         return $this->render('trajet/detail.html.twig', [
             'trajet' => $trajet,
-            'resastrajet' => $resas
+            'resastrajet' => $resas,
         ]);
     }
 

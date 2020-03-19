@@ -11,23 +11,55 @@ index:
 
 trajet.liste:
     path: /trajet/liste
-    controller : App\Controller\TrajetController::liste
+    controller: App\Controller\TrajetController::liste
 
 trajet.detail:
     path: /trajet/detail/{id}
-    controller : App\Controller\TrajetController::detail
+    controller: App\Controller\TrajetController::detail
 
 trajet.self:
     path: /trajet/self
-    controller : App\Controller\TrajetController::listeUser
+    controller: App\Controller\TrajetController::listeUser
 
 trajet.ajout:
     path: /trajet/ajout
-    controller : App\Controller\TrajetController::ajout
+    controller: App\Controller\TrajetController::ajout
 
 trajet.supprimer:
     path: /trajet/supprimer/{id}
-    controller : App\Controller\TrajetController::supprimer
+    controller: App\Controller\TrajetController::supprimer
 
 
 # Routes réservations
+
+reservation:
+    path: /reservation
+    controller: App\Controller\ReservationController::index
+
+reservation.ajout:
+    path: /reservation/ajout/{trajetid}
+    controller: App\Controller\ReservationController::ajout
+
+reservation.supprimer:
+    path: /reservation/supprimer/{id}
+    controller: App\Controller\ReservationController::supprimer
+
+# Routes commentaires
+
+commentaire.ajout:
+    path: /commentaire/ajout/{trajetid}
+    controller: App\Controller\CommentaireController::ajout
+
+commentaire.supprimer:
+    path: /commentaire/supprimer/{id}
+    controller: App\Controller\CommentaireController::supprimer
+
+commentaire:
+    path: /commentaire
+    controller: App\Controller\CommentaireController::listeUser
+
+# Routes admin
+
+admin:
+    path: /admin
+    controller: App\Controller\AdminController::index

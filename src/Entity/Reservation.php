@@ -2,13 +2,22 @@
 
 namespace App\Entity;
 
+use App\Entity\Trajet;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReservationRepository")
  */
 class Reservation
 {
+
+    public function __toString()
+    {
+        return "$this->trajet, $this->passager";
+
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -35,6 +44,7 @@ class Reservation
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Expression("value <= this.getTrajet().getNbPlaces()")
      */
     private $nbPersonnes;
 

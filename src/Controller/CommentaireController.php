@@ -2,32 +2,53 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
+use App\Entity\Trajet;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Entity\Commentaire;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Form\AjoutCommType;
 
 class CommentaireController extends AbstractController
 {
     /**
      * @Route("/commentaire", name="commentaire")
      */
-    public function index()
+    public function listeUser()
     {
-        return $this->render('commentaire/index.html.twig', [
-            'controller_name' => 'CommentaireController',
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+        $comms = $this->getDoctrine()->getRepository(Commentaire::class)->listeUser($usr->getId());
+
+        return $this->render('commentaire/listeself.html.twig', [
+            'comms' => $comms
         ]);
     }
 
     /**
-     * @Route("/commentaire/voir", name="commentaire.voir")
+     * @Route("/commentaire/ajout/{trajetid}", name="commentaire.ajout")
      */
-    public function voirCommentaires()
+    public function ajout(Request $request , EntityManagerInterface $em, $trajetid) : Response
     {
-        return $this->render('commentaire/index.html.twig', [
-            'controller_name' => 'ajoutCommentaire',
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+        $trajet = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetParSonId($trajetid);
+        $com = new Commentaire();
+        $com->setPosteur($usr);
+        $com->setTrajet($trajet);
+
+        $form = $this->createform(AjoutCommType::class, $com);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em->persist($com);
+            $em->flush();
+            $id = $com->getTrajet()->getId();
+            return $this->redirectToRoute("trajet.detail", ['id' => $id]);
+        }
+        return $this->render('trajet/ajout.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
@@ -37,20 +58,13 @@ class CommentaireController extends AbstractController
      * @param Commentaire $com
      * @param EntityManagerInterface $em
      * @return Response|RedirectResponse
-    */
-    public function ajoutCommentaire(Request $request, Commentaire $com, EntityManagerInterface $em)
+    */   
+    public function supprimer(Request $request, Commentaire $com, EntityManagerInterface $em) : Response
     {
-        return $this->render('commentaire/index.html.twig', [
-            'controller_name' => 'ajoutCommentaire',
-        ]);
-    }
-
-     
-    public function supprimerCommentaire()
-    {
-        return $this->render('commentaire/index.html.twig', [
-            'controller_name' => 'supprimerCommentaire',
-        ]);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($com);
+        $em->flush();
+        return $this->redirectToRoute("commentaire");
     }
 
 }
