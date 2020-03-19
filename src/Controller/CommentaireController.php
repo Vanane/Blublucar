@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AjoutCommType;
+use \DateTime;
 
 class CommentaireController extends AbstractController
 {
@@ -36,6 +37,7 @@ class CommentaireController extends AbstractController
         $com = new Commentaire();
         $com->setPosteur($usr);
         $com->setTrajet($trajet);
+        $com->setDatePost(new DateTime(date('Y-m-d h:i:s')));
 
         $form = $this->createform(AjoutCommType::class, $com);
         $form->handleRequest($request);
