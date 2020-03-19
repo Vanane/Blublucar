@@ -6,6 +6,7 @@
         <div>Id : {{ comm.id }}</div>
         <div>Note : {{ comm.note }}/5</div>
         <div>Message : {{ comm.message }}</div>
+        <div>Posté le : {{ comm.datePost.format(d M Y) }} </div>
     </div>
     <a class="but shadow" href={{ path("commentaire.supprimer", {'id':comm.id}) }}>Supprimer</a>
     {% else %}

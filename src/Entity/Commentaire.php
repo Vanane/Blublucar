@@ -43,6 +43,11 @@ class Commentaire
      */
     private $trajet;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $datePost;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +97,18 @@ class Commentaire
     public function setTrajet(?Trajet $trajet): self
     {
         $this->trajet = $trajet;
+
+        return $this;
+    }
+
+    public function getDatePost(): ?\DateTimeInterface
+    {
+        return $this->datePost;
+    }
+
+    public function setDatePost(\DateTimeInterface $datePost): self
+    {
+        $this->datePost = $datePost;
 
         return $this;
     }

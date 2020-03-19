@@ -48,6 +48,7 @@ le {{ trajet.date.format("D d M Y") }} à {{ trajet.date.format("h:i") }}
     <div> Posteur : {{ comm.posteur }} </div>
     <div> Note : {{ comm.note }}/5</div>
     <div> Message : {{ comm.message }} </div>
+    <div> Posté le : {{ comm.datePost.format('d M Y') }} </div>
 </div>
 
 {% else %}
