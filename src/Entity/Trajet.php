@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrajetRepository")
@@ -27,11 +29,12 @@ class Trajet
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Destination", inversedBy="trajets")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Expression("not (value == this.getPointArrivee())")
      */
     private $pointDepart;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Destination", inversedBy="trajets")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Destination", inversedBy="trajetsArrivee")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pointArrivee;
@@ -80,6 +83,11 @@ class Trajet
     {
         $this->commentaires = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return "$this->id : $this->pointDepart, $this->pointArrivee";
     }
 
     public function getId(): ?int
@@ -255,5 +263,17 @@ class Trajet
         $this->date = $date;
 
         return $this;
+    }
+
+
+    public function getPlacesPrises()
+    {
+        $resas = $this->getReservations();
+        $places = 0;
+        foreach($resas as $resa)
+        {
+            $places += $resa->getNbPersonnes();
+        }
+        return $places;
     }
 }

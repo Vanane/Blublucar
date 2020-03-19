@@ -9,6 +9,9 @@
     </head>
     <body>
     <a href="/"><h1>{% block titre %}Blublucar{% endblock %}</h1></a>
+    {% if app.user != null %}
+    <div style="float:right">Connecté en tant que {{app.user.getEmail() }}</div>
+    {% endif %}
     {% include "./menu.html.twig" %}
     <h2>{% block soustitre %}Le covoiturage des vrais bonhommes !{% endblock %}</h2>
 
