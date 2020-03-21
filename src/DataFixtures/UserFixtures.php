@@ -17,7 +17,6 @@ class UserFixtures extends Fixture
         
     }
 
-
     /**
      * @param ObjectManager $manager
      *

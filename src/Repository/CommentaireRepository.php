@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Commentaire;
+use App\Entity\Trajet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -35,6 +36,28 @@ class CommentaireRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->where("c.trajet_id = $id")
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    public function getNoteMoyenneUser($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->select("AVG(c.note)")
+            ->join("App\Entity\Trajet", "t", "t.id = c.trajet_id")        
+            ->where("t.conducteur = '$id'")
+            ->groupBy("t.conducteur")
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function getCommentairesUser($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->select("c")
+            ->join("App\Entity\Trajet", "t", "t.id = c.trajet_id")        
+            ->where("t.conducteur = '$id'")
             ->getQuery()
             ->getResult();
     }

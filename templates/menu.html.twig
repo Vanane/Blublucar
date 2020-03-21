@@ -1,12 +1,17 @@
 <div class="menu-bar">
     {% if app.user != null %}
-        <a class="but shadow" href="/logout/">Se déconnecter</a>
-        <a class="but shadow" href="/profil/">Profil</a>
-        <a class="but shadow" href="/reservation/">Vos Réservations</a>
-        <a class="but shadow" href="/commentaire">Vos Commentaires</a>
-        <a class="but shadow" href="/trajet/self">Vos Trajets</a>
+        <a class="but shadow" href={{ path("app_logout") }}>Se déconnecter</a>
+        <a class="but shadow" href={{ path("profil.self") }}>Profil</a>
+        <a class="but shadow" href={{ path("reservation") }}>Vos Réservations</a>
+        <a class="but shadow" href={{ path("commentaire") }}>Vos Commentaires</a>
+        <a class="but shadow" href={{ path("trajet.self") }}>Vos Trajets</a>
     {% else %}
-        <a class="but shadow" href="/login/">Se connecter</a>
+        <a class="but shadow" href={{ path("app_login") }}>Se connecter</a>
+        <a class="but shadow" href={{ path("register") }}>Créer un compte</a>
     {% endif %}
-    <a class="but shadow" href="/trajet/liste/">Trajets</a>
+        <a class="but shadow" href={{ path("trajet") }}>Trajets</a>
+
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class="but shadow" href={{ path("admin") }}>Admin</a>
+    {% endif %}
 </div>

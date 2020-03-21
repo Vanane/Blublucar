@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{% block soustitre %}Profil de {{ user.email }} {% endblock %}
+
+{% block body %}
+<div class="ligne-wrapper">
+    <div>Id utilisateur : {{ user.id }}</div>
+    <div>Email : {{ user.email }}</div>
+    <div>Note globale : {{ note }}/5</div>
+</div>
+<h2>Commentaires reçus</h2>
+    {% for comm in comms %}
+    <div class="ligne-wrapper">
+        <div>Id : {{ comm.id }}</div>
+        <div>Posteur : {{ comm.posteur }}</div>
+        <div>Note : {{ comm.note }}/5</div>
+        <div>Message : {{ comm.message }}</div>
+        <div>Posté le : {{ comm.datePost.format('d M Y') }} </div>
+    </div>
+    {% else %}
+    Aucun commentaire.
+    {% endfor %}
+
+{% endblock %}
+

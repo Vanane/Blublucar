@@ -6,7 +6,6 @@ index:
     path: /
     controller: App\Controller\TrajetController::index
 
-
 # Routes trajets
 
 trajet.liste:
@@ -57,6 +56,21 @@ commentaire.supprimer:
 commentaire:
     path: /commentaire
     controller: App\Controller\CommentaireController::listeUser
+
+
+# Routes user
+
+register:
+    path: /register
+    controller: App\Controller\UserController::register
+
+profil:
+    path: /profil/{id}
+    controller: App\Controller\UserController::profil
+
+profil.self:
+    path: /profil
+    controller: App\Controller\UserController::self
 
 # Routes admin
 
