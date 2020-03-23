@@ -92,9 +92,15 @@ class TrajetController extends AbstractController
      */
     public function supprimer(Request $request, Trajet $trajet, EntityManagerinterface $em) : Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($trajet);
-        $em->flush();
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+        
+        if($trajet->getConducteur()->getId() == $usr->getId()
+            && $trajet->getDate()->format("Ymdhis") > date("Ymdhis"))
+        {
+            $em = $this->getDoctrine()->getManager();        
+            $em->remove($trajet);
+            $em->flush();
+        }
         return $this->redirectToRoute("trajet.self");
     }
 }

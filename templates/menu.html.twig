@@ -9,7 +9,7 @@
         <a class="but shadow" href={{ path("app_login") }}>Se connecter</a>
         <a class="but shadow" href={{ path("register") }}>Créer un compte</a>
     {% endif %}
-        <a class="but shadow" href={{ path("trajet") }}>Trajets</a>
+        <a class="but shadow" href={{ path("trajet.liste") }}>Trajets</a>
 
     {% if is_granted("ROLE_ADMIN") %}
         <a class="but shadow" href={{ path("admin") }}>Admin</a>

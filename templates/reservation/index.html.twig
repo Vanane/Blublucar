@@ -1,12 +1,20 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% endblock %}
+{% block soustitre %}Vos Réservation{% endblock %}
 {% block body %}
-    {% for resa in resas %}
+    {% for resa in app.user.getReservations() %}
     <div class="ligne-wrapper">
         <div>Id : {{ resa.id }}</div>
-        <div>Id Trajet : {{ resa.trajet.getId() }}</div>
+        <div>Id Trajet : <a href={{ path("trajet.detail", {'id':resa.trajet.getId()}) }}>{{ resa.trajet.getId() }}</a></div>
         <div>Nombre de passagers : {{ resa.nbPersonnes }}</div>
-        <div>Payé : {{ resa.paye == 1 ? "oui" : "non" }}</div>
+                <div>
+        {% if resa.paye %}
+            Payé
+        {% else %}
+            <a href={{ path("reservation.payer", {'id':resa.id}) }}>Payer</a>
+        {% endif %}
+        </div>
+
     </div>
     <a class="but shadow" href={{ path("reservation.supprimer", {'id':resa.id}) }}>Supprimer</a>
     {% else %}

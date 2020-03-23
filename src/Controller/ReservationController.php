@@ -33,26 +33,59 @@ class ReservationController extends AbstractController
     {
         $resa = new Reservation();
         $trajet = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetparSonId($trajetid);
-        $resa->setTrajet($trajet);
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
 
-        $form = $this->createform(AjoutResaType::class, $resa);        
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
+        if($trajet->getConducteur()->getId() != $usr->getId()
+        && !array_key_exists($usr->getId(), $trajet->getPassagers()))
         {
-            $usr = $this->get('security.token_storage')->getToken()->getUser();
             $resa->setPassager($usr);
-            $resa->setTrajet($trajet);
             $resa->setPaye(0);
-            $em->persist($resa);
-            $em->flush();
-            return $this->redirectToRoute("trajet.detail", ['id' => $trajetid]);
+            $resa->setTrajet($trajet);
+
+            $form = $this->createform(AjoutResaType::class, $resa);        
+            $form->handleRequest($request);
+    
+            if($form->isSubmitted() && $form->isValid())
+            {
+                $resa->setPassager($usr);
+                $resa->setPaye(0);
+                $resa->setTrajet($trajet);
+        
+                $em->persist($resa);
+                $em->flush();
+                return $this->redirectToRoute("trajet.detail", ['id' => $trajetid]);
+            }
+            return $this->render('reservation/ajout.html.twig', [
+                'form' => $form->createView()
+            ]);
         }
-        return $this->render('reservation/ajout.html.twig', [
-            'form' => $form->createView()
-        ]);
+        else
+        {
+            return $this->render("reservation/index.html.twig");
+        }
     }
 
+    /**
+     * @Route("/reservation/payer/{id}", name="reservation.payer")
+     */
+    public function payer(Request $request, Reservation $reservation, EntityManagerinterface $em) : Response
+    {
+        $usr = $this->get('security.token_storage')->getToken()->getUser();        
+        if($reservation->getPassager()->getId() == $usr->getId()
+            && $reservation->getPaye() == false)
+        {
+            $em = $this->getDoctrine()->getManager();            
+            $reservation->setPaye(true);
+            $em->flush();
+            return $this->render("reservation/payer.html.twig", [
+                "id" => $reservation->getId()
+            ]);
+        }
+        else
+        {
+            return $this->render("reservation/index.html.twig");
+        }        
+    }
 
     /**
      * @Route("/reservation/supprimer/{id}", name="reservation.supprimer")

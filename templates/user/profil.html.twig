@@ -13,7 +13,7 @@
     {% for comm in comms %}
     <div class="ligne-wrapper">
         <div>Id : {{ comm.id }}</div>
-        <div>Posteur : {{ comm.posteur }}</div>
+        <div>Posteur : <a href={{ path("profil", {'id':comm.posteur.getId()}) }}>{{ comm.posteur }}</a></div>
         <div>Note : {{ comm.note }}/5</div>
         <div>Message : {{ comm.message }}</div>
         <div>Posté le : {{ comm.datePost.format('d M Y') }} </div>

@@ -44,7 +44,7 @@ class Reservation
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Expression("value <= this.getTrajet().getNbPlaces()")
+     * @Assert\Expression("value <= (this.getTrajet().getNbPlaces() - this.getTrajet().getPlacesPrises())")
      */
     private $nbPersonnes;
 

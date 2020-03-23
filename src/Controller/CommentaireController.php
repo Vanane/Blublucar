@@ -32,26 +32,35 @@ class CommentaireController extends AbstractController
      */
     public function ajout(Request $request , EntityManagerInterface $em, $trajetid) : Response
     {
+        $com = new Commentaire();
         $usr = $this->get('security.token_storage')->getToken()->getUser();
         $trajet = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetParSonId($trajetid);
-        $com = new Commentaire();
-        $com->setPosteur($usr);
-        $com->setTrajet($trajet);
-        $com->setDatePost(new DateTime(date('Y-m-d h:i:s')));
 
-        $form = $this->createform(AjoutCommType::class, $com);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
+        if($trajet->getConducteur()->getId() != $usr->getId()
+            && array_key_exists($usr->getId(), $trajet->getPassagers()))
         {
-            $em->persist($com);
-            $em->flush();
-            $id = $com->getTrajet()->getId();
-            return $this->redirectToRoute("trajet.detail", ['id' => $id]);
+            $com->setPosteur($usr);
+            $com->setTrajet($trajet);
+            $com->setDatePost(new DateTime(date('Y-m-d h:i:s')));
+
+            $form = $this->createform(AjoutCommType::class, $com);
+            $form->handleRequest($request);
+
+            if($form->isSubmitted() && $form->isValid())
+            {
+                $em->persist($com);
+                $em->flush();
+                $id = $com->getTrajet()->getId();
+                return $this->redirectToRoute("trajet.detail", ['id' => $id]);
+            }
+            return $this->render('trajet/ajout.html.twig', [
+                'form' => $form->createView()
+            ]);
         }
-        return $this->render('trajet/ajout.html.twig', [
-            'form' => $form->createView()
-        ]);
+        else
+        {
+            return $this->render("commentaire/listeself.html.twig");
+        }
     }
 
     /**

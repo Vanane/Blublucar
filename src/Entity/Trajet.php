@@ -76,6 +76,7 @@ class Trajet
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\Expression("value.format('Ymdhis') > this.getCurrentDate().format('Ymdhis')")
      */
     private $date;
 
@@ -275,5 +276,24 @@ class Trajet
             $places += $resa->getNbPersonnes();
         }
         return $places;
+    }
+
+    public function getPassagers()
+    {
+        $resas = $this->getReservations();
+        $a = array();
+        foreach($resas as $resa)
+        {
+            $a[$resa->getPassager()->getId()] = $resa->getPassager();
+        }
+        return $a;
+    }
+
+
+
+
+    public function getCurrentDate()
+    {
+        return new \DateTime();
     }
 }

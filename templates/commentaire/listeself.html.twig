@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
-{% block title %}{% endblock %}
+{% block title %}Commentaires{% endblock %}
+{% block soustitre %}Vos Commentaires{% endblock %}
 {% block body %}
-    {% for comm in comms %}
+    {% for comm in app.user.getCommentaires() %}
     <div class="ligne-wrapper">
         <div>Id : {{ comm.id }}</div>
         <div>Note : {{ comm.note }}/5</div>
@@ -13,3 +14,4 @@
     Vous n'avez posté aucun commentaire.
     {% endfor %}
 {% endblock %}
+

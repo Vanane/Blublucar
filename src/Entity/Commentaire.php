@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentaireRepository")
@@ -33,7 +35,13 @@ class Commentaire
     private $message;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     * min=0,
+     * max=5,
+     * minMessage="Note entre 0 et 5",
+     * maxMessage="Note entre 0 et 5"
+     * )
      */
     private $note;
 

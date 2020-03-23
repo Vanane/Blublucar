@@ -43,6 +43,10 @@ reservation.supprimer:
     path: /reservation/supprimer/{id}
     controller: App\Controller\ReservationController::supprimer
 
+reservation.payer:
+    path: /reservation/payer/{id}
+    controller: App\Controller\ReservationController::payer
+
 # Routes commentaires
 
 commentaire.ajout:

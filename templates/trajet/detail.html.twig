@@ -18,14 +18,17 @@ le {{ trajet.date.format("D d M Y") }} à {{ trajet.date.format("h:i") }}
         <div> Temps de Trajet : {{ trajet.tempsTrajet }}</div>        
         <div> Voiture : {{ trajet.vehicule }}</div>        
     </div>
-{% if trajet.conducteur.getId() == app.user.getId() %}
+{% if app.user == trajet.conducteur %}
+    {% if trajet.getDate().format("Ymdhis") > date().format("Ymdhis") %}
     <a class="but" href={{ path("trajet.supprimer", {"id" : trajet.id}) }}>Supprimer</a>
+    {% endif %}
+
     <h2>Réservations</h2>
     {% for resa in trajet.reservations %}
 
     <div class="ligne-wrapper">
         <div> Id Réservation : {{ resa.id }} </div>
-        <div> Passager : {{ resa.passager }} </div>
+        <div> Passager : <a href={{ path("profil", {'id':resa.passager.getId()}) }}>{{ resa.passager }}</a> </div>
         <div> Nombre de personnes : {{ resa.nbPersonnes }} </div>
         
         <div> Paiement effectué : {{ resa.Paye == 1 ? "oui" : "non" }} </div>
@@ -35,7 +38,9 @@ le {{ trajet.date.format("D d M Y") }} à {{ trajet.date.format("h:i") }}
     Il n'y a encore aucune réservation.
     {% endfor %}
 {% else %}
+    {% if app.user != trajet.conducteur and trajet.getDate().format("Ymdhis") > date().format("Ymdhis") %}
     <a class="but shadow" href={{ path("reservation.ajout", {'trajetid':trajet.id}) }}>Réserver une Place</a>
+    {% endif %}
 {% endif %}
     <h2>Commentaires</h2>
     {% if app.user != trajet.conducteur %}
@@ -45,7 +50,7 @@ le {{ trajet.date.format("D d M Y") }} à {{ trajet.date.format("h:i") }}
 {% for comm in trajet.commentaires %}
 
 <div class="ligne-wrapper">
-    <div> Posteur : {{ comm.posteur }} </div>
+    <div> Posteur : <a href={{ path("profil", {'id':comm.posteur.getId()}) }}>{{ comm.posteur }}</a> </div>
     <div> Note : {{ comm.note }}/5</div>
     <div> Message : {{ comm.message }} </div>
     <div> Posté le : {{ comm.datePost.format('d M Y') }} </div>
