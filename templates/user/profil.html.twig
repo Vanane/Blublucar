@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
 
-{% block soustitre %}Profil de {{ user.email }} {% endblock %}
+{% block soustitre %}{% trans with {'%name%': user.email} %}profile.title{% endtrans %}{% endblock %}
 
 {% block body %}
 <div class="ligne-wrapper">
-    <div>Id utilisateur : {{ user.id }}</div>
-    <div>Email : {{ user.email }}</div>
-    <div>Note globale : {{ note }}/5</div>
+    <div>{% trans %}user.id{% endtrans %} : {{ user.id }}</div>
+    <div>{% trans %}user.email{% endtrans %} : {{ user.email }}</div>
+    <div>{% trans %}user.score{% endtrans %} : {{ note }}/5</div>
 </div>
-<h2>Commentaires reçus</h2>
+<h2>{% trans %}comments.received{% endtrans %}</h2>
     {% for comm in comms %}
     <div class="ligne-wrapper">
-        <div>Id : {{ comm.id }}</div>
-        <div>Posteur : <a href={{ path("profil", {'id':comm.posteur.getId()}) }}>{{ comm.posteur }}</a></div>
-        <div>Note : {{ comm.note }}/5</div>
-        <div>Message : {{ comm.message }}</div>
-        <div>Posté le : {{ comm.datePost.format('d M Y') }} </div>
+        <div>{% trans %}comments.id{% endtrans %} : {{ comm.id }}</div>
+        <div>{% trans %}comments.poster{% endtrans %} : <a href={{ path("profil", {'id':comm.posteur.getId()}) }}>{{ comm.posteur }}</a></div>
+        <div>{% trans %}comments.score{% endtrans %} : {{ comm.note }}/5</div>
+        <div>{% trans %}comments.message{% endtrans %} : {{ comm.message }}</div>
+        <div>{% trans %}comments.posted{% endtrans %} : {{ comm.datePost.format('d M Y') }} </div>
     </div>
     {% else %}
-    Aucun commentaire.
+    {% trans %}comments.none{% endtrans %}
     {% endfor %}
 
 {% endblock %}

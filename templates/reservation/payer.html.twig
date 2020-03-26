@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
-{% block title %}Payer{% endblock %}
-{% block soustitre %}Paiement en ligne Sécurisé{% endblock %}
+{% block title %}{% trans %}reservations.pay{% endtrans %}{% endblock %}
+{% block soustitre %}{% trans %}reservation.securepayment{% endtrans %}{% endblock %}
 {% block body %}
-Le paiement de la réservation n°{{ id }} a bien été validé.
+{% trans with {'%id%' : id} %}reservations.confirm{% endtrans %}
 {% endblock %}

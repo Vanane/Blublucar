@@ -1,0 +1,76 @@
+trips:
+  next: 'Prochains Trajets'
+  self: 'Vos Trajets'
+  trip: 'Trajet'
+  details: 'Détails du Trajet'
+  id: 'Id Trajet'
+  driver: 'Conducteur'
+  places: 'Nombre de places'
+  remaining: 'Places restantes'
+  departure: 'Départ'
+  arrival: 'Arrivée'
+  time: 'Durée'
+  vehicle: 'Véhicule'
+  none: 'Aucun trajet disponible.'
+  trips: 'Trajets'
+  add: 'Ajouter un Trajet'
+
+comments:
+  title: 'Commentaires'
+  self: 'Vos Commentaires'
+  received: 'Commentaires reçus'
+  id: 'Id Commentaire'
+  score: 'Note'
+  message: 'Message'
+  poster: 'Posteur'
+  posted: 'Posté le'
+  post: 'Poster un Commentaire'
+  none: 'Aucun commentaire enregistré.'
+
+
+destinations:
+
+
+reservations:
+  title: 'Réservations'
+  self: 'Vos Réservations'
+  book: 'Réserver'
+  id: 'Id Réservation'
+  reserver: 'Passager'
+  people: 'Nombre de passages'
+  paid: 'Payé'
+  pay: 'Payer'
+  none: 'Aucune réservation réalisée.'
+  securepayment: 'Paiement en ligne Sécurisé'
+  confirm: 'Le paiement pour la réservation n°%id% a été confirmé.'
+
+
+user:
+  id: 'Id Utilisateur'
+  email: 'Email'
+  password: 'Mot de Passe'
+  score: 'Note Globale'
+  disconnect: 'Déconnexion'
+  profile: 'Profil'
+  reservations: 'Vos Réservations'
+  comments: 'Vos Commentaires'
+  trips: 'Vos Trajets'
+  connect: 'Connexion'
+  connected: 'Vous êtes connecté en tant que'
+  create: 
+    register: 'S''enregistrer'
+    confirm: 'Créer un Compte'
+  admin: 'Admin'
+
+profile:
+  title: 'Profil de %name%'
+
+base:
+  title: 'Blublucar'
+  subtitle: 'Le covoiturage des vrais bonhommes !'
+  delete: 'Supprimer'
+  create: 'Créer'
+  at: 'à'
+  yes: 'oui'
+  no: 'non'
+  languages: 'Langues'

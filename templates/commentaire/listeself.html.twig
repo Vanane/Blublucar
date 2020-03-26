@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
-{% block title %}Commentaires{% endblock %}
-{% block soustitre %}Vos Commentaires{% endblock %}
+{% block title %}{% trans %}comments.title{% endtrans %}{% endblock %}
+{% block soustitre %}{% trans %}comments.self{% endtrans %}{% endblock %}
 {% block body %}
     {% for comm in app.user.getCommentaires() %}
     <div class="ligne-wrapper">
-        <div>Id : {{ comm.id }}</div>
-        <div>Note : {{ comm.note }}/5</div>
-        <div>Message : {{ comm.message }}</div>
-        <div>Posté le : {{ comm.datePost.format('d M Y') }} </div>
+        <div>{% trans %}comments.id{% endtrans %} : {{ comm.id }}</div>
+        <div>{% trans %}comments.score{% endtrans %} : {{ comm.note }}/5</div>
+        <div>{% trans %}comments.message{% endtrans %} : {{ comm.message }}</div>
+        <div>{% trans %}comments.posted{% endtrans %} : {{ comm.datePost.format('d M Y') }} </div>
     </div>
     <a class="but shadow" href={{ path("commentaire.supprimer", {'id':comm.id}) }}>Supprimer</a>
     {% else %}
-    Vous n'avez posté aucun commentaire.
+    {% trans %}comments.none{% endtrans %}
     {% endfor %}
 {% endblock %}
 

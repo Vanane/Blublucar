@@ -1,63 +1,69 @@
 {% extends "base.html.twig" %}
 
 {% block soustitre %}
-Détail du trajet {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }},
-le {{ trajet.date.format("D d M Y") }} à {{ trajet.date.format("h:i") }}
+{% trans %}trips.details{% endtrans %} {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }},
+{{ trajet.date.format("D d M Y") }} {% trans %}base.at{% endtrans %} {{ trajet.date.format("h:i") }}
 {% endblock %}
 
 
 {% block body %}
 
     <div class="trajet-wrapper">
-        <div> Id Trajet : {{ trajet.id }} </div>
-        <div> Conducteur : {{ trajet.conducteur }} </div>
-        <div> Nombre de places : {{ trajet.nbPlaces }} </div>
-        <div> Places restantes : {{ trajet.nbPlaces - resastrajet }} </div>
-        <div> Départ : {{ trajet.pointDepart }} </div>
-        <div> Arrivée : {{ trajet.pointArrivee }} </div>
-        <div> Temps de Trajet : {{ trajet.tempsTrajet }}</div>        
-        <div> Voiture : {{ trajet.vehicule }}</div>        
+        <div> {% trans %}trips.id{% endtrans %} : {{ trajet.id }} </div>
+        <div> {% trans %}trips.driver{% endtrans %} : {{ trajet.conducteur }} </div>
+        <div> {% trans %}trips.plces{% endtrans %} : {{ trajet.nbPlaces }} </div>
+        <div> {% trans %}trips.remaining{% endtrans %} : {{ trajet.nbPlaces - resastrajet }} </div>
+        <div> {% trans %}trips.departure{% endtrans %} : {{ trajet.pointDepart }} </div>
+        <div> {% trans %}trips.arrival{% endtrans %} : {{ trajet.pointArrivee }} </div>
+        <div> {% trans %}trips.time{% endtrans %} : {{ trajet.tempsTrajet }}</div>        
+        <div> {% trans %}trips.vehicle{% endtrans %} : {{ trajet.vehicule }}</div>        
     </div>
 {% if app.user == trajet.conducteur %}
     {% if trajet.getDate().format("Ymdhis") > date().format("Ymdhis") %}
-    <a class="but" href={{ path("trajet.supprimer", {"id" : trajet.id}) }}>Supprimer</a>
+    <a class="but" href={{ path("trajet.supprimer", {"id" : trajet.id}) }}>{% trans %}base.delete{% endtrans %}</a>
     {% endif %}
 
-    <h2>Réservations</h2>
+    <h2>{% trans %}reservations.title{% endtrans %}</h2>
     {% for resa in trajet.reservations %}
 
     <div class="ligne-wrapper">
-        <div> Id Réservation : {{ resa.id }} </div>
-        <div> Passager : <a href={{ path("profil", {'id':resa.passager.getId()}) }}>{{ resa.passager }}</a> </div>
-        <div> Nombre de personnes : {{ resa.nbPersonnes }} </div>
+        <div> {% trans %}reservations.id{% endtrans %} : {{ resa.id }} </div>
+        <div> {% trans %}reservations.reserver{% endtrans %} : <a href={{ path("profil", {'id':resa.passager.getId()}) }}>{{ resa.passager }}</a> </div>
+        <div> {% trans %}reservations.people{% endtrans %} : {{ resa.nbPersonnes }} </div>
         
-        <div> Paiement effectué : {{ resa.Paye == 1 ? "oui" : "non" }} </div>
+        <div> {% trans %}reservations.paid{% endtrans %} :
+        {% if resa.Paye == 1 %}
+        {% trans %}base.yes{% endtrans %}
+        {% else %}
+        {% trans %}base.no{% endtrans %}
+        {% endif %}
+        </div>
     </div>
 
     {% else %}
-    Il n'y a encore aucune réservation.
+    {% trans %}reservations.none{% endtrans %}
     {% endfor %}
 {% else %}
     {% if app.user != trajet.conducteur and trajet.getDate().format("Ymdhis") > date().format("Ymdhis") %}
-    <a class="but shadow" href={{ path("reservation.ajout", {'trajetid':trajet.id}) }}>Réserver une Place</a>
+    <a class="but shadow" href={{ path("reservation.ajout", {'trajetid':trajet.id}) }}>{% trans %}reservations.book{% endtrans %}</a>
     {% endif %}
 {% endif %}
-    <h2>Commentaires</h2>
+    <h2>{% trans %}comments.title{% endtrans %}</h2>
     {% if app.user != trajet.conducteur %}
-    <a class="but shadow" href={{ path("commentaire.ajout", {'trajetid':trajet.id}) }}>Ajouter un Commentaire</a>
+    <a class="but shadow" href={{ path("commentaire.ajout", {'trajetid':trajet.id}) }}>{% trans %}comments.post{% endtrans %}</a>
     {% endif %}
 
 {% for comm in trajet.commentaires %}
 
 <div class="ligne-wrapper">
-    <div> Posteur : <a href={{ path("profil", {'id':comm.posteur.getId()}) }}>{{ comm.posteur }}</a> </div>
-    <div> Note : {{ comm.note }}/5</div>
-    <div> Message : {{ comm.message }} </div>
-    <div> Posté le : {{ comm.datePost.format('d M Y') }} </div>
+    <div> {% trans %}comments.poster{% endtrans %} : <a href={{ path("profil", {'id':comm.posteur.getId()}) }}>{{ comm.posteur }}</a> </div>
+    <div> {% trans %}comments.score{% endtrans %} : {{ comm.note }}/5</div>
+    <div> {% trans %}comments.message{% endtrans %} : {{ comm.message }} </div>
+    <div> {% trans %}comments.posted{% endtrans %}: {{ comm.datePost.format('d M Y') }} </div>
 </div>
 
 {% else %}
-Il n'y a encore aucun commentaire
+{% trans %}comments.none{% endtrans %}
 {% endfor %}
 
 {% endblock %}

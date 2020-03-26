@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block soustitre %}Prochains départs{% endblock %}
+{% block soustitre %}
+{% trans %}trips.next{% endtrans %}
+{% endblock %}
 
 {% block body %}
     {% for trajet in trajets %}
     <a class="ligne-wrapper shadow" href={{ path("trajet.detail", {'id' : trajet.id}) }}>
-        <div> Id Trajet : {{ trajet.id }} </div>
-        <div> Trajet : {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }}</div>
+        <div> {% trans %}trips.id{% endtrans %} : {{ trajet.id }} </div>
+        <div> {% trans %}trips.trip{% endtrans %} : {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }}</div>
     </a>
     {% else %}
-        Aucun trajet n'est disponible.
+        {% trans %}trips.none{% endtrans %}
     {% endfor %}
 {% endblock %}
 

@@ -1,0 +1,76 @@
+trips:
+  next: 'Next Trips'
+  self: 'Your Trips'
+  trip: 'Trip'
+  details: 'Trip details'
+  id: 'Trip Id'
+  driver: 'Driver'
+  places: 'Total places'
+  remaining: 'Remaining places'
+  departure: 'From'
+  arrival: 'To'
+  time: 'Travel Time'
+  vehicle: 'Vehicle'
+  none: 'No trip available yet.'
+  trips: 'Trips'
+  add: 'Add a Trip'
+
+comments:
+  title: 'Comments'
+  self: 'Your Comments'
+  received: 'Comments from your Trips'
+  id: 'Comment Id'
+  score: 'Score'
+  message: 'Message'
+  poster: 'Poster'
+  posted: 'Posted on'
+  post: 'Post a Comment'
+  none: 'No comment posted yet.'
+
+
+destinations:
+
+
+reservations:
+  title: 'Reservations'
+  self: 'Your Reservations'
+  book: 'Book'
+  id: 'Reservation Id'
+  reserver: 'Booker'
+  people: 'Number of Passengers'
+  paid: 'Paid'
+  pay: 'Pay'
+  none: 'No reservation made yet.'
+  securepayment: 'Secure Online Payment'
+  confirm: 'Payment for reservation n°%id% is confirmed.'
+
+
+user:
+  id: 'User Id'
+  email: 'Email'
+  password: 'Password'
+  score: 'Overall Score'
+  disconnect: 'Disconnect'
+  profile: 'Profile'
+  reservations: 'Your Reservations'
+  comments: 'Your Comments'
+  trips: 'Your Trips'
+  connect: 'Login'
+  connected: 'You are logged as'
+  create: 
+    register: 'Register'
+    confirm: 'Create Account'
+  admin: 'Admin'
+
+profile:
+  title: '%name%''s Profile'
+
+base:
+  title: 'Blublucar'
+  subtitle: 'Carpooling for tough guys !'
+  delete: 'Delete'
+  create: 'Create'
+  at: 'at'
+  yes: 'yes'
+  no: 'no'
+  languages: 'Languages'

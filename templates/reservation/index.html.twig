@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% endblock %}
-{% block soustitre %}Vos Réservation{% endblock %}
+{% block soustitre %}{% trans %}reservations.self{% endtrans %}{% endblock %}
 {% block body %}
     {% for resa in app.user.getReservations() %}
     <div class="ligne-wrapper">
-        <div>Id : {{ resa.id }}</div>
-        <div>Id Trajet : <a href={{ path("trajet.detail", {'id':resa.trajet.getId()}) }}>{{ resa.trajet.getId() }}</a></div>
-        <div>Nombre de passagers : {{ resa.nbPersonnes }}</div>
+        <div>{% trans %}reservations.id{% endtrans %} : {{ resa.id }}</div>
+        <div>{% trans %}trips.id{% endtrans %} : <a href={{ path("trajet.detail", {'id':resa.trajet.getId()}) }}>{{ resa.trajet.getId() }}</a></div>
+        <div>{% trans %}reservations.people{% endtrans %} : {{ resa.nbPersonnes }}</div>
                 <div>
         {% if resa.paye %}
-            Payé
+            {% trans %}reservations.paid{% endtrans %}
         {% else %}
-            <a href={{ path("reservation.payer", {'id':resa.id}) }}>Payer</a>
+            <a href={{ path("reservation.payer", {'id':resa.id}) }}>{% trans %}reservations.pay{% endtrans %}</a>
         {% endif %}
         </div>
 
     </div>
-    <a class="but shadow" href={{ path("reservation.supprimer", {'id':resa.id}) }}>Supprimer</a>
+    <a class="but shadow" href={{ path("reservation.supprimer", {'id':resa.id}) }}>{% trans %}base.delete{% endtrans %}</a>
     {% else %}
-    Vous n'avez aucune réservation.
+    {% trans %}reservations.none{% endtrans %}
     {% endfor %}
 
 {% endblock %}

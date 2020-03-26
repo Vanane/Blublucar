@@ -1,6 +1,7 @@
 *
 {
     font-family: 'Indie Flower';
+    z-index:-1;
 }
 
 body
@@ -43,7 +44,8 @@ a
     height:auto;
     border:1px black solid;
     box-sizing: border-box;
-    overflow: auto;
+    float:right;
+    z-index:0;
 }
 
 .ligne-wrapper, .ligne-wrapper div
@@ -66,4 +68,39 @@ a
 {
     width:50%;
     float:left;
+}
+
+
+
+.dropdown
+{
+    position:relative;
+    display:inline-block;
+}
+
+.dropbtn
+{
+    float:none;
+}
+
+
+.dropdown-content
+{
+    display:none;
+    position:absolute;
+    color:black;
+    background-color:white;
+    width:100%;
+    z-index:100;
+}
+
+.dropdown-content a
+{
+    display:block;
+    padding:0.5em 1em;
+}
+
+.dropdown:hover .dropdown-content
+{
+    display:block;
 }

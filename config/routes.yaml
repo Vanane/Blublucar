@@ -2,79 +2,115 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-index:
+base:
     path: /
-    controller: App\Controller\TrajetController::index
+    defaults:
+        _controller: App\Controller\TrajetController::index
+        permanent: true
 
+index:
+    path: /{_locale}
+    controller: App\Controller\TrajetController::index
+    requirements:
+        _locale: en|fr
+        
 # Routes trajets
 
 trajet.liste:
-    path: /trajet/liste
+    path: /{_locale}/trajet/liste
     controller: App\Controller\TrajetController::liste
+    requirements:
+        _locale: en|fr
 
 trajet.detail:
-    path: /trajet/detail/{id}
+    path: /{_locale}/trajet/detail/{id}
     controller: App\Controller\TrajetController::detail
+    requirements:
+        _locale: en|fr
 
 trajet.self:
-    path: /trajet/self
+    path: /{_locale}/trajet/self
     controller: App\Controller\TrajetController::listeUser
+    requirements:
+        _locale: en|fr
 
 trajet.ajout:
-    path: /trajet/ajout
+    path: /{_locale}/trajet/ajout
     controller: App\Controller\TrajetController::ajout
+    requirements:
+        _locale: en|fr
 
 trajet.supprimer:
-    path: /trajet/supprimer/{id}
+    path: /{_locale}/trajet/supprimer/{id}
     controller: App\Controller\TrajetController::supprimer
-
+    requirements:
+        _locale: en|fr
 
 # Routes réservations
 
 reservation:
-    path: /reservation
+    path: /{_locale}/reservation
     controller: App\Controller\ReservationController::index
+    requirements:
+        _locale: en|fr
 
 reservation.ajout:
-    path: /reservation/ajout/{trajetid}
+    path: /{_locale}/reservation/ajout/{trajetid}
     controller: App\Controller\ReservationController::ajout
+    requirements:
+        _locale: en|fr
 
 reservation.supprimer:
-    path: /reservation/supprimer/{id}
+    path: /{_locale}/reservation/supprimer/{id}
     controller: App\Controller\ReservationController::supprimer
+    requirements:
+        _locale: en|fr
 
 reservation.payer:
-    path: /reservation/payer/{id}
+    path: /{_locale}/reservation/payer/{id}
     controller: App\Controller\ReservationController::payer
+    requirements:
+        _locale: en|fr
 
 # Routes commentaires
 
 commentaire.ajout:
-    path: /commentaire/ajout/{trajetid}
+    path: /{_locale}/commentaire/ajout/{trajetid}
     controller: App\Controller\CommentaireController::ajout
+    requirements:
+        _locale: en|fr
 
 commentaire.supprimer:
-    path: /commentaire/supprimer/{id}
+    path: /{_locale}/commentaire/supprimer/{id}
     controller: App\Controller\CommentaireController::supprimer
+    requirements:
+        _locale: en|fr
 
 commentaire:
-    path: /commentaire
+    path: /{_locale}/commentaire
     controller: App\Controller\CommentaireController::listeUser
-
+    requirements:
+        _locale: en|fr
 
 # Routes user
 
 register:
-    path: /register
+    path: /{_locale}/register
     controller: App\Controller\UserController::register
+    requirements:
+        _locale: en|fr
 
 profil:
-    path: /profil/{id}
+    path: /{_locale}/profil/{id}
     controller: App\Controller\UserController::profil
+    requirements:
+        _locale: en|fr
 
 profil.self:
-    path: /profil
+    path: /{_locale}/profil
     controller: App\Controller\UserController::self
+    requirements:
+        _locale: en|fr
 
 # Routes admin
 

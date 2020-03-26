@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="GvBQDk0" resname="destinations">
+        <source>destinations</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="VMPQk_A" resname="trips.next">
+        <source>trips.next</source>
+        <target>Prochains Départs</target>
+      </trans-unit>
+      <trans-unit id="AK0SeNp" resname="trips.self">
+        <source>trips.self</source>
+        <target>__trips.self</target>
+      </trans-unit>
+      <trans-unit id="Lxr2cf7" resname="trips.trip">
+        <source>trips.trip</source>
+        <target>Trajet :</target>
+      </trans-unit>
+      <trans-unit id="CTZbxjB" resname="trips.details">
+        <source>trips.details</source>
+        <target>__trips.details</target>
+      </trans-unit>
+      <trans-unit id="OSfh4L." resname="trips.id">
+        <source>trips.id</source>
+        <target>Id Trajet :</target>
+      </trans-unit>
+      <trans-unit id="l3j7FOB" resname="trips.driver">
+        <source>trips.driver</source>
+        <target>__trips.driver</target>
+      </trans-unit>
+      <trans-unit id="yeQf3BL" resname="trips.places">
+        <source>trips.places</source>
+        <target>Nombre de places</target>
+      </trans-unit>
+      <trans-unit id="mlFQVDD" resname="trips.remaining">
+        <source>trips.remaining</source>
+        <target>__trips.remaining</target>
+      </trans-unit>
+      <trans-unit id="5cgRQMx" resname="trips.departure">
+        <source>trips.departure</source>
+        <target>__trips.departure</target>
+      </trans-unit>
+      <trans-unit id="kWcaP38" resname="trips.arrival">
+        <source>trips.arrival</source>
+        <target>__trips.arrival</target>
+      </trans-unit>
+      <trans-unit id="XohPN1i" resname="trips.time">
+        <source>trips.time</source>
+        <target>__trips.time</target>
+      </trans-unit>
+      <trans-unit id="xygrmmd" resname="trips.vehicle">
+        <source>trips.vehicle</source>
+        <target>__trips.vehicle</target>
+      </trans-unit>
+      <trans-unit id="_9TeIQh" resname="trips.none">
+        <source>trips.none</source>
+        <target>Aucun trajet diposnible.</target>
+      </trans-unit>
+      <trans-unit id="ovMpYUD" resname="trips.trips">
+        <source>trips.trips</source>
+        <target>__trips.trips</target>
+      </trans-unit>
+      <trans-unit id="qz9SN4N" resname="trips.add">
+        <source>trips.add</source>
+        <target>__trips.add</target>
+      </trans-unit>
+      <trans-unit id="jB3MFMp" resname="comments.title">
+        <source>comments.title</source>
+        <target>__comments.title</target>
+      </trans-unit>
+      <trans-unit id="T0yd1CC" resname="comments.self">
+        <source>comments.self</source>
+        <target>__comments.self</target>
+      </trans-unit>
+      <trans-unit id="t7H_a.6" resname="comments.received">
+        <source>comments.received</source>
+        <target>Commentaires reçus</target>
+      </trans-unit>
+      <trans-unit id="385ZST2" resname="comments.id">
+        <source>comments.id</source>
+        <target>__comments.id</target>
+      </trans-unit>
+      <trans-unit id="Vi5gKJQ" resname="comments.score">
+        <source>comments.score</source>
+        <target>__comments.score</target>
+      </trans-unit>
+      <trans-unit id="xHk8U7O" resname="comments.message">
+        <source>comments.message</source>
+        <target>__comments.message</target>
+      </trans-unit>
+      <trans-unit id="fEsuHG7" resname="comments.poster">
+        <source>comments.poster</source>
+        <target>__comments.poster</target>
+      </trans-unit>
+      <trans-unit id="H54NIuC" resname="comments.posted">
+        <source>comments.posted</source>
+        <target>__comments.posted</target>
+      </trans-unit>
+      <trans-unit id="gD6qrLq" resname="comments.post">
+        <source>comments.post</source>
+        <target>__comments.post</target>
+      </trans-unit>
+      <trans-unit id="pBFVjf_" resname="comments.none">
+        <source>comments.none</source>
+        <target>__comments.none</target>
+      </trans-unit>
+      <trans-unit id="cIiLb.3" resname="reservations.title">
+        <source>reservations.title</source>
+        <target>__reservations.title</target>
+      </trans-unit>
+      <trans-unit id="oT0U89G" resname="reservations.self">
+        <source>reservations.self</source>
+        <target>__reservations.self</target>
+      </trans-unit>
+      <trans-unit id="0YTdddE" resname="reservations.book">
+        <source>reservations.book</source>
+        <target>__reservations.book</target>
+      </trans-unit>
+      <trans-unit id="o0MSgcU" resname="reservations.id">
+        <source>reservations.id</source>
+        <target>__reservations.id</target>
+      </trans-unit>
+      <trans-unit id="gIU7LUH" resname="reservations.reserver">
+        <source>reservations.reserver</source>
+        <target>__reservations.reserver</target>
+      </trans-unit>
+      <trans-unit id="9BW.KL9" resname="reservations.people">
+        <source>reservations.people</source>
+        <target>__reservations.people</target>
+      </trans-unit>
+      <trans-unit id="B.zfc9t" resname="reservations.paid">
+        <source>reservations.paid</source>
+        <target>__reservations.paid</target>
+      </trans-unit>
+      <trans-unit id="cQ_.rGU" resname="reservations.pay">
+        <source>reservations.pay</source>
+        <target>__reservations.pay</target>
+      </trans-unit>
+      <trans-unit id="0TLSLc_" resname="reservations.none">
+        <source>reservations.none</source>
+        <target>__reservations.none</target>
+      </trans-unit>
+      <trans-unit id="bGxxkOC" resname="reservations.securepayment">
+        <source>reservations.securepayment</source>
+        <target>Paiement en ligne Sécurisé</target>
+      </trans-unit>
+      <trans-unit id="rdO4L7C" resname="reservations.confirm">
+        <source>reservations.confirm</source>
+        <target>__reservations.confirm</target>
+      </trans-unit>
+      <trans-unit id="9PCVAdj" resname="user.id">
+        <source>user.id</source>
+        <target>Id Utilisateur</target>
+      </trans-unit>
+      <trans-unit id="YfUYcGV" resname="user.email">
+        <source>user.email</source>
+        <target>__user.email</target>
+      </trans-unit>
+      <trans-unit id="pVZ4m.T" resname="user.password">
+        <source>user.password</source>
+        <target>__user.password</target>
+      </trans-unit>
+      <trans-unit id="z2BFq7A" resname="user.score">
+        <source>user.score</source>
+        <target>Note Globale</target>
+      </trans-unit>
+      <trans-unit id="iQakJA7" resname="user.disconnect">
+        <source>user.disconnect</source>
+        <target>__user.disconnect</target>
+      </trans-unit>
+      <trans-unit id="5PugSUc" resname="user.profile">
+        <source>user.profile</source>
+        <target>__user.profile</target>
+      </trans-unit>
+      <trans-unit id="RajVYh9" resname="user.reservations">
+        <source>user.reservations</source>
+        <target>__user.reservations</target>
+      </trans-unit>
+      <trans-unit id="vIvdO7Q" resname="user.comments">
+        <source>user.comments</source>
+        <target>__user.comments</target>
+      </trans-unit>
+      <trans-unit id="7.P2qR1" resname="user.trips">
+        <source>user.trips</source>
+        <target>__user.trips</target>
+      </trans-unit>
+      <trans-unit id="41.uB_t" resname="user.connect">
+        <source>user.connect</source>
+        <target>__user.connect</target>
+      </trans-unit>
+      <trans-unit id="Ufpjejd" resname="user.connected">
+        <source>user.connected</source>
+        <target>__user.connected</target>
+      </trans-unit>
+      <trans-unit id="iA5cnzE" resname="user.create.register">
+        <source>user.create.register</source>
+        <target>__user.create.register</target>
+      </trans-unit>
+      <trans-unit id="x_Bd7eT" resname="user.create.confirm">
+        <source>user.create.confirm</source>
+        <target>__user.create.confirm</target>
+      </trans-unit>
+      <trans-unit id="QOkGijg" resname="user.admin">
+        <source>user.admin</source>
+        <target>__user.admin</target>
+      </trans-unit>
+      <trans-unit id="1_wnK76" resname="profile.title">
+        <source>profile.title</source>
+        <target>Profil de %name%</target>
+      </trans-unit>
+      <trans-unit id="if1CjXB" resname="base.title">
+        <source>base.title</source>
+        <target>Blublucar</target>
+      </trans-unit>
+      <trans-unit id="fdzviWN" resname="base.subtitle">
+        <source>base.subtitle</source>
+        <target>Le covoiturage des vrais bonhommes !</target>
+      </trans-unit>
+      <trans-unit id="MNEkuLh" resname="base.delete">
+        <source>base.delete</source>
+        <target>__base.delete</target>
+      </trans-unit>
+      <trans-unit id="uq1lmMW" resname="base.create">
+        <source>base.create</source>
+        <target>__base.create</target>
+      </trans-unit>
+      <trans-unit id="e0Z5gYi" resname="base.at">
+        <source>base.at</source>
+        <target>__base.at</target>
+      </trans-unit>
+      <trans-unit id="w4ao9GC" resname="base.yes">
+        <source>base.yes</source>
+        <target>__base.yes</target>
+      </trans-unit>
+      <trans-unit id="KMVc3fi" resname="base.no">
+        <source>base.no</source>
+        <target>__base.no</target>
+      </trans-unit>
+      <trans-unit id="Pt7f.DD" resname="base.languages">
+        <source>base.languages</source>
+        <target>Langues</target>
+      </trans-unit>
+      <trans-unit id="7vDDlsG" resname="prout">
+        <source>prout</source>
+        <target>blublu</target>
+      </trans-unit>
+      <trans-unit id="x5Iszyv" resname="reservation.book">
+        <source>reservation.book</source>
+        <target>__reservation.book</target>
+      </trans-unit>
+      <trans-unit id="zPJhxi6" resname="user.create">
+        <source>user.create</source>
+        <target>__user.create</target>
+      </trans-unit>
+      <trans-unit id="jgYfono" resname="reservation.securepayment">
+        <source>reservation.securepayment</source>
+        <target>__reservation.securepayment</target>
+      </trans-unit>
+      <trans-unit id="MriOj.H" resname="trips.plces">
+        <source>trips.plces</source>
+        <target>__trips.plces</target>
+      </trans-unit>
+      <trans-unit id="HdsKVq_" resname="user.profile.title">
+        <source>user.profile.title</source>
+        <target>__user.profile.title</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

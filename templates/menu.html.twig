@@ -1,17 +1,24 @@
 <div class="menu-bar">
     {% if app.user != null %}
-        <a class="but shadow" href={{ path("app_logout") }}>Se déconnecter</a>
-        <a class="but shadow" href={{ path("profil.self") }}>Profil</a>
-        <a class="but shadow" href={{ path("reservation") }}>Vos Réservations</a>
-        <a class="but shadow" href={{ path("commentaire") }}>Vos Commentaires</a>
-        <a class="but shadow" href={{ path("trajet.self") }}>Vos Trajets</a>
+        <a class="but shadow" href={{ path("app_logout") }}>{% trans %}user.disconnect{% endtrans %}</a>
+        <a class="but shadow" href={{ path("profil.self") }}>{% trans %}user.profile{% endtrans %}</a>
+        <a class="but shadow" href={{ path("reservation") }}>{% trans %}user.reservations{% endtrans %}</a>
+        <a class="but shadow" href={{ path("commentaire") }}>{% trans %}user.comments{% endtrans %}</a>
+        <a class="but shadow" href={{ path("trajet.self") }}>{% trans %}user.trips{% endtrans %}</a>
     {% else %}
-        <a class="but shadow" href={{ path("app_login") }}>Se connecter</a>
-        <a class="but shadow" href={{ path("register") }}>Créer un compte</a>
+        <a class="but shadow" href={{ path("app_login") }}>{% trans %}user.connect{% endtrans %}</a>
+        <a class="but shadow" href={{ path("register") }}>{% trans %}user.create.register{% endtrans %}</a>
     {% endif %}
-        <a class="but shadow" href={{ path("trajet.liste") }}>Trajets</a>
+        <a class="but shadow" href={{ path("trajet.liste") }}>{% trans %}trips.trips{% endtrans %}</a>
 
     {% if is_granted("ROLE_ADMIN") %}
-        <a class="but shadow" href={{ path("admin") }}>Admin</a>
+        <a class="but shadow" href={{ path("admin") }}>{% trans %}user.admin{% endtrans %}</a>
     {% endif %}
+    <div class="dropdown">
+        <a class="shadow but dropbtn">{% trans %}base.languages{% endtrans %}</a>
+        <div class="dropdown-content">
+            <a class="shadow" href={{ path("index", {'_locale':'fr'}) }}>Français</a>
+            <a class="shadow" href={{ path("index", {'_locale':'en'}) }}>English</a>
+        </div>        
+    </div>
 </div>

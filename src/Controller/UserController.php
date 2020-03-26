@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Cookie;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\RegisterUserType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -74,5 +75,4 @@ class UserController extends AbstractController
             'comms' => $comms
         ]);
     }
-
 }
