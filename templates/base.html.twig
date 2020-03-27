@@ -10,7 +10,7 @@
     <a href="/"><h1>{% block titre %}{% trans %}base.title{% endtrans %}{% endblock %}</h1></a>
     <h2>{% trans %}base.subtitle{% endtrans %}</h2>
     {% if app.user != null %}
-    <div style="float:right">{% trans %}user.connected{% endtrans %} {{app.user.getEmail() }}</div>
+    <div style="text-align:right">{% trans %}user.connected{% endtrans %} {{app.user.getEmail() }}</div>
     {% endif %}
     {% include "./menu.html.twig" %}
     <h2>{% block soustitre %}{% endblock %}</h2>
