@@ -213,6 +213,18 @@
         <source>profile.title</source>
         <target>Profil de %name%</target>
       </trans-unit>
+      <trans-unit id="1fXGr9W" resname="themes.themes">
+        <source>themes.themes</source>
+        <target>Thèmes</target>
+      </trans-unit>
+      <trans-unit id="T7W4KFO" resname="themes.light">
+        <source>themes.light</source>
+        <target>Jour</target>
+      </trans-unit>
+      <trans-unit id="MzPt4XK" resname="themes.dark">
+        <source>themes.dark</source>
+        <target>Nuit</target>
+      </trans-unit>
       <trans-unit id="if1CjXB" resname="base.title">
         <source>base.title</source>
         <target>Blublucar</target>

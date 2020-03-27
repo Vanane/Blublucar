@@ -65,6 +65,11 @@ user:
 profile:
   title: 'Profil de %name%'
 
+themes:
+  themes: 'Thèmes'
+  light: 'Jour'
+  dark: 'Nuit'
+
 base:
   title: 'Blublucar'
   subtitle: 'Le covoiturage des vrais bonhommes !'

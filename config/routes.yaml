@@ -112,6 +112,13 @@ profil.self:
     requirements:
         _locale: en|fr
 
+
+theme:
+    path: /theme/{theme}        
+    controller: App\Controller\UserController::theme
+    requirements:
+        theme: dark|light
+
 # Routes admin
 
 admin:

@@ -23,6 +23,16 @@ class UserController extends AbstractController
         $this->passwordEncoder = $passwordEncoder;
         
     }
+
+    /**
+     * @Route("/theme/{theme}", name="theme") 
+     */
+    public function theme(Request $request, $theme) : Response
+    {
+        $response = $this->redirectToRoute('trajet');
+        $response->headers->setcookie(new Cookie('user_theme', $theme));
+        return $response;
+    }
     
     /**
      * @Route("/register", name="register")

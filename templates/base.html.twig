@@ -3,9 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/css.css">
+        {% block css %}<link rel="stylesheet" type="text/css" href="/themes/{{ app.request.cookies.get("user_theme") }}.css">{% endblock %}
         <title>{% block title %}{% trans %}base.title{% endtrans %}{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
     </head>
     <body>
     <a href="/"><h1>{% block titre %}{% trans %}base.title{% endtrans %}{% endblock %}</h1></a>
@@ -18,6 +17,6 @@
 
         {% block body %}
         {% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block js %}{% endblock %}
     </body>
 </html>

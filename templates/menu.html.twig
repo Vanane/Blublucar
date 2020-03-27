@@ -21,4 +21,13 @@
             <a class="shadow" href={{ path("index", {'_locale':'en'}) }}>English</a>
         </div>        
     </div>
+    <div class="dropdown">
+        <a class="shadow but dropbtn">{% trans %}themes.themes{% endtrans %}</a>
+        <div class="dropdown-content">
+            <a class="shadow" href={{ path("theme", {"theme":"dark"}) }}>{% trans %}themes.dark{% endtrans %}</a>
+            <a class="shadow" href={{ path("theme", {'theme':'light'}) }}>{% trans %}themes.light{% endtrans %}</a>
+        </div>        
+    </div>
+
+
 </div>

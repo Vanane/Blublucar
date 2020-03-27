@@ -65,6 +65,11 @@ user:
 profile:
   title: '%name%''s Profile'
 
+themes:
+  themes: 'Themes'
+  light: 'Light'
+  dark: 'Dark'
+
 base:
   title: 'Blublucar'
   subtitle: 'Carpooling for tough guys !'
