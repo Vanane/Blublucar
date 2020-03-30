@@ -22,6 +22,19 @@ trajet.liste:
     requirements:
         _locale: en|fr
 
+trajet.filtre.date:   
+    path: /{_locale}/trajet/liste/date/{date}
+    controller: App\Controller\TrajetController::listeParDate
+    requirements:
+        _locale: en|fr
+    
+
+trajet.filtre.trajet:
+    path: /trajet/liste/trajet/{dep}/{arr}
+    controller: App\Controller\TrajetController::listeParTrajet
+    requirements:
+        _locale: en|fr
+
 trajet.detail:
     path: /{_locale}/trajet/detail/{id}
     controller: App\Controller\TrajetController::detail

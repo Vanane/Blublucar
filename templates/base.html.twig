@@ -2,8 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
-        {% block css %}<link rel="stylesheet" type="text/css" href="/themes/{{ app.request.cookies.get("user_theme") }}.css">{% endblock %}
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">        
+
+        {% block css %}<link rel="stylesheet" type="text/css" href="/themes/{{ app.request.cookies.get("user_theme") != null ? app.request.cookies.get("user_theme") : "light" }}.css">{% endblock %}
         <title>{% block title %}{% trans %}base.title{% endtrans %}{% endblock %}</title>
     </head>
     <body>

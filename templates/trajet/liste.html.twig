@@ -2,7 +2,12 @@
 
 {% block soustitre %}{% trans %}trips.trips{% endtrans %}{% endblock %}
 {% block body %}
-    {% for trajet in trajets %}
+    <h3>{% trans %}trips.filters.filters{% endtrans %}</h3>
+    <input type="date" id="dateSel" value="{{ date().format('Y-m-d') }}"></input>
+
+    <a class="but shadow" onclick="goto('{{ path('trajet.filtre.date', {'date':'attr1'}) }}')">{% trans %}trips.filters.filter{% endtrans %}</a>
+
+        {% for trajet in trajets %}
     <a class="ligne-wrapper shadow" href={{ path("trajet.detail", {'id' : trajet.id}) }}>
         <div> {% trans %}trips.id{% endtrans %} : {{ trajet.id }} </div>
         <div> {% trans %}trips.trip{% endtrans %} : {{ trajet.pointDepart }} -> {{ trajet.pointArrivee }}</div>
@@ -11,4 +16,18 @@
         {% trans %}trips.none{% endtrans %}
     {% endfor %}
     <a class="but shadow" href={{ path("trajet.ajout") }}>{% trans %}trips.add{% endtrans %}</a>
+{% endblock %}
+
+{% block js %}
+<script>
+function goto(url)
+{
+    url = url.replace('attr1', document.getElementById('dateSel').value);
+
+    window.location.replace(url);
+}
+
+</script>
+
+
 {% endblock %}

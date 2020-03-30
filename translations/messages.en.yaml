@@ -14,6 +14,11 @@ trips:
   none: 'No trip available yet.'
   trips: 'Trips'
   add: 'Add a Trip'
+  filters:
+    filter: 'Filter'
+    filters: 'Filters'
+    date: 'By Date'
+    travel: 'By Departure & Arrival'
 
 comments:
   title: 'Comments'

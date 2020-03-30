@@ -14,6 +14,12 @@ trips:
   none: 'Aucun trajet disponible.'
   trips: 'Trajets'
   add: 'Ajouter un Trajet'
+  filters:
+    filter: 'Filtrer'
+    filters: 'Filtres'
+    date: 'Par Date'
+    travel: 'Par Destinations'
+
 
 comments:
   title: 'Commentaires'

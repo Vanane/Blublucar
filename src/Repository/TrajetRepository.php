@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Trajet;
+use App\Entity\Destination;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -53,6 +54,45 @@ class TrajetRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('t')
         ->where("t.date > '$dateAjd'")
         ->setMaxResults(5)
+        ->getQuery()
+        ->getResult();
+    }
+
+    /**
+     * @return Trajet[] Returns an array of Trajet objects
+    */    
+    public function getTrajetsDateSup($date)
+    {
+        $dateS = $date->format('c');
+        return $this->createQueryBuilder('t')
+        ->where("t.date > '$dateS'")
+        ->orderBy("t.date")
+        ->getQuery()
+        ->getResult();
+    }
+
+    /**
+     * @return Trajet[] Returns an array of Trajet objects
+    */    
+    public function getTrajetsDateEq($date)
+    {
+        $dateS = $date->format('Y-m-d');
+        return $this->createQueryBuilder('t')
+        ->where("t.date LIKE '$dateS%'")
+        ->orderBy("t.date")
+        ->getQuery()
+        ->getResult();
+    }
+
+
+    /**
+     * @return Trajet[] Returns an array of Trajet objects
+    */    
+    public function getTrajetsDepartArrivee($dep, $arr)
+    {
+        return $this->createQueryBuilder('t')
+        ->where("t.pointDepart = '$dep' AND t.pointArrivee = '$arr'")
+        ->orderBy("t.date")
         ->getQuery()
         ->getResult();
     }

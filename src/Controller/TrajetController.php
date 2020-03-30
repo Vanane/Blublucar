@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Trajet;
 use App\Entity\Reservation;
+use App\Entity\Destination;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AjoutTrajetType;
+use \DateTime;
 
 class TrajetController extends AbstractController
 {
@@ -29,7 +31,31 @@ class TrajetController extends AbstractController
      */
     public function liste()
     {
-        $trajets = $this->getDoctrine()->getRepository(Trajet::class)->list();
+        $trajets = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetsDateSup(new DateTime());
+
+        return $this->render('trajet/liste.html.twig', [
+            'trajets' => $trajets
+        ]);
+    }
+
+    /**
+     * @Route("/trajet/liste/date/{date}", name="trajet.filtre.date")
+     */
+    public function listeParDate(DateTime $date)
+    {
+        $trajets = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetsDateEq($date);
+
+        return $this->render('trajet/liste.html.twig', [
+            'trajets' => $trajets
+        ]);
+    }
+
+    /**
+     * @Route("/trajet/liste/trajet/{depart}/{arrivee}", name="trajet.filtre.trajet")
+     */
+    public function listeParTrajet(Destination $dep, Destination $arr)
+    {
+        $trajets = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetsDepartArrivee($dep, $arr);
 
         return $this->render('trajet/liste.html.twig', [
             'trajets' => $trajets
