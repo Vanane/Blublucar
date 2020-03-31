@@ -2,7 +2,6 @@
 
 {% block soustitre %}{% trans %}trips.trips{% endtrans %}{% endblock %}
 {% block body %}
-    {% block filtres %}{% endblock %}
     {% for trajet in trajets %}
     <a class="ligne-wrapper shadow" href={{ path("trajet.detail", {'id' : trajet.id}) }}>
         <div> {% trans %}trips.id{% endtrans %} : {{ trajet.id }} </div>
@@ -11,5 +10,4 @@
     {% else %}
         {% trans %}trips.none{% endtrans %}
     {% endfor %}
-    <a class="but shadow" href={{ path("trajet.ajout") }}>{% trans %}trips.add{% endtrans %}</a>
 {% endblock %}

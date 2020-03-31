@@ -1,0 +1,19 @@
+{% extends "trajet/liste.html.twig" %}
+
+    {% block filtres %}
+
+<h3>Filtres</h3>
+    {{ form_start(formParcours) }}
+    {{ form_widget(formParcours) }}
+    
+    <button type="submit">{% trans %}base.filters.filter{% endtrans %}</button>
+    
+    {{ form_end(formParcours) }}
+
+    {{ form_start(formDate) }}
+    {{ form_widget(formDate) }}
+    
+    <button type="submit">{% trans %}base.filters.filter{% endtrans %}</button>
+    
+    {{ form_end(formDate) }}
+    {% endblock %}

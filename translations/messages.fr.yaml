@@ -6,6 +6,8 @@ trips:
   id: 'Id Trajet'
   driver: 'Conducteur'
   places: 'Nombre de places'
+  price: 'Prix'
+  options: 'Options'  
   remaining: 'Places restantes'
   departure: 'Départ'
   arrival: 'Arrivée'
@@ -14,11 +16,7 @@ trips:
   none: 'Aucun trajet disponible.'
   trips: 'Trajets'
   add: 'Ajouter un Trajet'
-  filters:
-    filter: 'Filtrer'
-    filters: 'Filtres'
-    date: 'Par Date'
-    travel: 'Par Destinations'
+  date: 'Date'
 
 
 comments:
@@ -32,9 +30,6 @@ comments:
   posted: 'Posté le'
   post: 'Poster un Commentaire'
   none: 'Aucun commentaire enregistré.'
-
-
-destinations:
 
 
 reservations:
@@ -85,3 +80,6 @@ base:
   yes: 'oui'
   no: 'non'
   languages: 'Langues'
+  of: 'du'
+  filters:
+    filter: 'Filtrer'

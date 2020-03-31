@@ -5,10 +5,6 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="GvBQDk0" resname="destinations">
-        <source>destinations</source>
-        <target></target>
-      </trans-unit>
       <trans-unit id="VMPQk_A" resname="trips.next">
         <source>trips.next</source>
         <target>Next Trips</target>
@@ -69,22 +65,6 @@
         <source>trips.add</source>
         <target>Add a Trip</target>
       </trans-unit>
-      <trans-unit id="cNo0zfD" resname="trips.filters.filter">
-        <source>trips.filters.filter</source>
-        <target>Filter</target>
-      </trans-unit>
-      <trans-unit id="G3EXUM1" resname="trips.filters.filters">
-        <source>trips.filters.filters</source>
-        <target>Filters</target>
-      </trans-unit>
-      <trans-unit id="BFACFBx" resname="trips.filters.date">
-        <source>trips.filters.date</source>
-        <target>By Date</target>
-      </trans-unit>
-      <trans-unit id="SDoAuXK" resname="trips.filters.travel">
-        <source>trips.filters.travel</source>
-        <target><![CDATA[By Departure & Arrival]]></target>
-      </trans-unit>
       <trans-unit id="jB3MFMp" resname="comments.title">
         <source>comments.title</source>
         <target>Comments</target>
@@ -124,6 +104,10 @@
       <trans-unit id="pBFVjf_" resname="comments.none">
         <source>comments.none</source>
         <target>No comment posted yet.</target>
+      </trans-unit>
+      <trans-unit id="nnPyiwe" resname="destinations.title">
+        <source>destinations.title</source>
+        <target>Destination</target>
       </trans-unit>
       <trans-unit id="cIiLb.3" resname="reservations.title">
         <source>reservations.title</source>
@@ -272,6 +256,26 @@
       <trans-unit id="Pt7f.DD" resname="base.languages">
         <source>base.languages</source>
         <target>Languages</target>
+      </trans-unit>
+      <trans-unit id="GvBQDk0" resname="destinations">
+        <source>destinations</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="cNo0zfD" resname="trips.filters.filter">
+        <source>trips.filters.filter</source>
+        <target>Filter</target>
+      </trans-unit>
+      <trans-unit id="G3EXUM1" resname="trips.filters.filters">
+        <source>trips.filters.filters</source>
+        <target>Filters</target>
+      </trans-unit>
+      <trans-unit id="BFACFBx" resname="trips.filters.date">
+        <source>trips.filters.date</source>
+        <target>By Date</target>
+      </trans-unit>
+      <trans-unit id="SDoAuXK" resname="trips.filters.travel">
+        <source>trips.filters.travel</source>
+        <target><![CDATA[By Departure & Arrival]]></target>
       </trans-unit>
       <trans-unit id="MriOj.H" resname="trips.plces">
         <source>trips.plces</source>

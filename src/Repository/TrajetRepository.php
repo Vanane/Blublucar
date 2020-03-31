@@ -90,8 +90,10 @@ class TrajetRepository extends ServiceEntityRepository
     */    
     public function getTrajetsDepartArrivee($dep, $arr)
     {
+        $iddep = $dep->getId();
+        $idarr = $arr->getId();
         return $this->createQueryBuilder('t')
-        ->where("t.pointDepart = '$dep' AND t.pointArrivee = '$arr'")
+        ->where("t.pointDepart = '$iddep' AND t.pointArrivee = '$idarr'")
         ->orderBy("t.date")
         ->getQuery()
         ->getResult();

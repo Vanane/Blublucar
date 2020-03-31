@@ -22,19 +22,6 @@ trajet.liste:
     requirements:
         _locale: en|fr
 
-trajet.filtre.date:   
-    path: /{_locale}/trajet/liste/date/{date}
-    controller: App\Controller\TrajetController::listeParDate
-    requirements:
-        _locale: en|fr
-    
-
-trajet.filtre.trajet:
-    path: /trajet/liste/trajet/{dep}/{arr}
-    controller: App\Controller\TrajetController::listeParTrajet
-    requirements:
-        _locale: en|fr
-
 trajet.detail:
     path: /{_locale}/trajet/detail/{id}
     controller: App\Controller\TrajetController::detail
@@ -102,6 +89,20 @@ commentaire.supprimer:
 commentaire:
     path: /{_locale}/commentaire
     controller: App\Controller\CommentaireController::listeUser
+    requirements:
+        _locale: en|fr
+
+# Routes destinations
+
+destination.filtre.trajet:
+    path: /{_locale}/destination/{dep}/{arr}
+    controller: App\Controller\DestinationController::trajetsParcours
+    requirements:
+        _locale: en|fr
+
+destination.filtre.date:
+    path: /{_locale}/destination/{date}
+    controller: App\Controller\DestinationController::trajetsDate
     requirements:
         _locale: en|fr
 

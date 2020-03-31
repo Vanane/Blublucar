@@ -37,11 +37,11 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         
-        # require ROLE_ADMIN for /trajet*
-        - { path: ^/fr|en/profil.*, roles: ROLE_USER }
-        - { path: ^/fr|en/reservation.*, roles: ROLE_USER }
-        - { path: ^/fr|en/trajet/self, roles: ROLE_USER }
-        - { path: ^/fr|en/trajet/ajout/.*, roles: ROLE_USER }
-        - { path: ^/fr|en/trajet/detail/.*, roles: ROLE_USER }
-        - { path: ^/fr|en/trajet/supprimer/.*, roles: ROLE_USER }
-        - { path: ^/fr|en/admin/.*, roles: ROLE_ADMIN }
+        - { path: ^/(fr|en)/profil.*, roles: ROLE_USER }
+        - { path: ^/(fr|en)/reservation.*, roles: ROLE_USER }
+        - { path: ^/(fr|en)/trajet/self, roles: ROLE_USER }
+        - { path: ^/(fr|en)/trajet/ajout.*, roles: ROLE_USER }
+        - { path: ^/(fr|en)/trajet/detail.*, roles: ROLE_USER }
+        - { path: ^/(fr|en)/trajet/supprimer.*, roles: ROLE_USER }
+        - { path: ^/(fr|en)/destination.*, roles: ROLE_USER }
+        - { path: ^/admin/.*, roles: ROLE_ADMIN }

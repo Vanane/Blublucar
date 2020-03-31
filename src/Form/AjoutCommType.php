@@ -13,13 +13,15 @@ class AjoutCommType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('message', T\TextareaType::class)
+            ->add('message', T\TextareaType::class, [
+                'label' => 'comments.message'
+            ])
             ->add('note', T\IntegerType::class, [
                 "attr"=>[
                     "min"=>0,
-                    "max"=>5
+                    "max"=>5,
+                    'label' => 'comments.score'
                 ]
-
             ])
         ;
     }

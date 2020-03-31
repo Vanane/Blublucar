@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AjoutTrajetType;
+use App\Form\FiltreParcoursType;
+use App\Form\FiltreDateType;
 use \DateTime;
 
 class TrajetController extends AbstractController
@@ -29,36 +31,41 @@ class TrajetController extends AbstractController
     /**
      * @Route("/trajet/liste", name="trajet.liste")
      */
-    public function liste()
+    public function liste(Request $request , EntityManagerInterface $em) : Response
     {
+        $rep = $this->getDoctrine()->getRepository(Trajet::class);
+
+        $formFiltreParcours = $this->createform(FiltreParcoursType::class);
+        $formFiltreParcours->handleRequest($request);
+
+        $formFiltreDate = $this->createForm(FiltreDateType::class);
+        $formFiltreDate->handleRequest($request);
+
+        if($formFiltreParcours->isSubmitted() && $formFiltreParcours->isValid())
+        {
+            $data = $formFiltreParcours->getData();
+            return $this->redirectToRoute("destination.filtre.trajet",
+            ['dep' => $data['pointDepart']->getId(),
+             'arr' => $data['pointArrivee']->getId()]);
+        }
+        else
+        {
+            if($formFiltreDate->isSubmitted() && $formFiltreDate->isValid())
+            {
+                $data = $formFiltreDate->getData();
+                return $this->redirectToRoute("destination.filtre.date",
+                ['date' => $data['dateDepart']->format('Y-m-d')]);
+            }
+    
+        }
+
+
         $trajets = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetsDateSup(new DateTime());
 
-        return $this->render('trajet/liste.html.twig', [
-            'trajets' => $trajets
-        ]);
-    }
-
-    /**
-     * @Route("/trajet/liste/date/{date}", name="trajet.filtre.date")
-     */
-    public function listeParDate(DateTime $date)
-    {
-        $trajets = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetsDateEq($date);
-
-        return $this->render('trajet/liste.html.twig', [
-            'trajets' => $trajets
-        ]);
-    }
-
-    /**
-     * @Route("/trajet/liste/trajet/{depart}/{arrivee}", name="trajet.filtre.trajet")
-     */
-    public function listeParTrajet(Destination $dep, Destination $arr)
-    {
-        $trajets = $this->getDoctrine()->getRepository(Trajet::class)->getTrajetsDepartArrivee($dep, $arr);
-
-        return $this->render('trajet/liste.html.twig', [
-            'trajets' => $trajets
+        return $this->render('trajet/listefiltres.html.twig', [
+            'trajets' => $trajets,
+            'formParcours' => $formFiltreParcours->createView(),
+            'formDate' => $formFiltreDate->createView()
         ]);
     }
 

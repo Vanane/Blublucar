@@ -15,19 +15,29 @@ class AjoutTrajetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tempsTrajet')
-            ->add('prix')
-            ->add('nbPlaces')
-            ->add('vehicule')
+            ->add('tempsTrajet', Type\NumberType::class, [
+                'label' => 'trips.time'
+            ])
+            ->add('prix', Type\NumberType::class, [
+                'label' => 'trips.price'
+            ])
+            ->add('nbPlaces', Type\NumberType::class, [
+                'label' => 'trips.places'
+            ])
+            ->add('vehicule', Type\TextType::class, [
+                'label' => 'trips.vehicle'
+            ])
             ->add('options')
             ->add('date')
             ->add('pointDepart', TypeS\EntityType::class, 
             [                
-                'class' => Destination::class
+                'class' => Destination::class,
+                'label' => 'trips.departure'
             ])
             ->add('pointArrivee', TypeS\EntityType::class, 
             [                
-                'class' => Destination::class
+                'class' => Destination::class,
+                'label' => 'trips.arrival'
             ])
         ;
     }

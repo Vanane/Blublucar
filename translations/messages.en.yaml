@@ -6,6 +6,8 @@ trips:
   id: 'Trip Id'
   driver: 'Driver'
   places: 'Total places'
+  price: 'Price'
+  options: 'Options'
   remaining: 'Remaining places'
   departure: 'From'
   arrival: 'To'
@@ -14,11 +16,8 @@ trips:
   none: 'No trip available yet.'
   trips: 'Trips'
   add: 'Add a Trip'
-  filters:
-    filter: 'Filter'
-    filters: 'Filters'
-    date: 'By Date'
-    travel: 'By Departure & Arrival'
+  date: 'Date'
+
 
 comments:
   title: 'Comments'
@@ -31,9 +30,6 @@ comments:
   posted: 'Posted on'
   post: 'Post a Comment'
   none: 'No comment posted yet.'
-
-
-destinations:
 
 
 reservations:
@@ -84,3 +80,6 @@ base:
   yes: 'yes'
   no: 'no'
   languages: 'Languages'
+  of: 'of'
+  filters:
+    filter: 'Filter'

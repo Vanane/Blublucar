@@ -2,22 +2,18 @@
 
 namespace App\Form;
 
-use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type as T;
+use Symfony\Component\Form\Extension\Core\Type as Type;
 
-class RegisterUserType extends AbstractType
+class FiltreDateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', T\EmailType::class, [
-                'label' => 'user.email'
-            ])
-            ->add('password', T\PasswordType::class, [
-                'label' => 'user.password'
+            ->add('dateDepart', Type\DateType::class, [
+                'label' => 'trips.date'
             ])
         ;
     }
@@ -25,7 +21,6 @@ class RegisterUserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
         ]);
     }
 }
